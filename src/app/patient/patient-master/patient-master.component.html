@@ -1,0 +1,76 @@
+<div class="conatiner-fluid">
+    <ul class="nav nav-tabs nav-justified" id="tbpatient" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tbPatientSearch-tab" data-bs-toggle="tab" data-bs-target="#tbPatientSearch"
+          type="button" role="tab" aria-controls="tbPatientSearch" aria-selected="true">Search</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tbPersonalInfo-tab" data-bs-toggle="tab" data-bs-target="#tbPersonalInfo"
+          type="button" role="tab" aria-controls="tbPersonalInfo" aria-selected="false">Perosnal Information</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tbPatientHistory-tab" data-bs-toggle="tab" data-bs-target="#tbPatientHistory"
+          type="button" role="tab" aria-controls="tbPatientHistory" aria-selected="false">Patient History</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tbPatientTreatment-tab" data-bs-toggle="tab" data-bs-target="#tbPatientTreatment"
+          type="button" role="tab" aria-controls="tbPatientTreatment" aria-selected="false">Patient Treatment</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tbPatientAppointment-tab" data-bs-toggle="tab" data-bs-target="#tbPatientAppointment"
+          type="button" role="tab" aria-controls="tbPatientAppointment" aria-selected="false">Patient Appointment</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tbPatientReports-tab" data-bs-toggle="tab" data-bs-target="#tbPatientReport"
+          type="button" role="tab" aria-controls="tbPatientReport" aria-selected="false">Patient Reports
+          Documents</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="nav-tabContentPatientInfo">
+      <div class="tab-pane fade show active" id="tbPatientSearch" role="tabpanel" aria-labelledby="tbPatientSearch-tab">
+        <app-patient-search></app-patient-search>
+      </div>
+  
+      <div class="tab-pane fade" id="tbPersonalInfo" role="tabpanel" aria-labelledby="tbPersonalInfo-tab">
+        <app-patient-personal-info></app-patient-personal-info>
+      </div>
+  
+  
+      <div class="tab-pane fade" id="tbPatientHistory" role="tabpanel" aria-labelledby="tbPatientHistory-tab">
+        <app-patient-history></app-patient-history>
+      </div>
+  
+      <div class="tab-pane fade" id="tbPatientTreatment" role="tabpanel" aria-labelledby="tbPatientTreatment-tab">
+        <app-patient-treatment></app-patient-treatment>
+      </div>
+  
+      <div class="tab-pane fade" id="tbPatientAppointment" role="tabpanel" aria-labelledby="tbPatientAppointment-tab">
+        <app-patient-appointment></app-patient-appointment>
+      </div>
+  
+      <div class="tab-pane fade" id="tbPatientReport" role="tabpanel" aria-labelledby="tbPatientReport-tab">
+        <app-patient-report></app-patient-report>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="conatiner">
+    <div class="row">
+      <div class="col">
+        <button type="button" id="btnPatientSave" class="btn btn-primary" style="width: 25%;">Save</button>
+      </div>
+      <div class="col">
+        <button type="button" id="btnPatientClear" class="btn btn-secondary" style="width: 25%;">Clear</button>
+      </div>
+      <div class="col">
+        <button type="button" id="btnPatientSearch" class="btn btn-secondary" style="width: 25%;">Search</button>
+      </div>
+      <div class="col">
+        <button type="button" id="btnPatientDelete" class="btn btn-secondary" style="width: 25%;">Delete</button>
+      </div>
+    </div>
+    <br/>
+  </div>
+  <br />
+  <br />
+  <br />
