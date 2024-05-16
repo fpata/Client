@@ -12,6 +12,7 @@ import { PatientPersonalInfoComponent } from './patient/patient-personal-info/pa
 import { PatientReportComponent } from './patient/patient-report/patient-report.component';
 import { PatientSearchComponent } from './patient/patient-search/patient-search.component';
 import { PatientTreatmentComponent } from './patient/patient-treatment/patient-treatment.component';
+import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-appointment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PatientTreatmentComponent } from './patient/patient-treatment/patient-t
     PatientPersonalInfoComponent,
     PatientReportComponent,
     PatientSearchComponent,
-    PatientTreatmentComponent
+    PatientTreatmentComponent,
+    DoctorAppointmentComponent
   ],
   imports: [
     BrowserModule,

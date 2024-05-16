@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <br />
+    <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th style="text-align: right;"><button type="button" class="btn btn-primary"
+                                        data-bs-toggle="modal" data-bs-target="#addAppointmentModal">Add
+                                        Appointment</button></th>
+                            </tr>
+                            <tr>
+                                <th>Patient</th>
+                                <th>Procedure</th>
+                                <th>Next Appointment Date</th>
+                                <th>Next Appointment Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>BMP</td>
+                                <td>10/01/2023</td>
+                                <td>11:30 AM</td>
+                            </tr>
+                            <tr>
+                                <td>Scott Tiger</td>
+                                <td>F</td>
+                                <td>15/01/2023</td>
+                                <td>10:30 AM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" data-bs-keyboard="false" data-bs-backdrop="static"  id="addAppointmentModal" tabindex="-1" aria-labelledby="addAppointmentModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="apptModalLabel">Add Appointment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <br />
+                <div class="row">
+                    <div class="col">
+                      <label for="txtAppointmentDate" class="form-label">Appointment Date</label>
+                    </div>
+                    <div class="col">
+                      <input type="date" id="txtAppointmentDate" class="form-control">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                      <label for="txtAppointmentTime" class="form-label">Appointment Time</label>
+                    </div>
+                    <div class="col">
+                      <input type="time" id="txtAppointmentTime" class="form-control">
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <label for="txtApptProcedure" class="form-label">Procedure</label>
+                    </div>
+                    <div class="col">
+                      <input type="text" id="txtApptProcedure" class="form-control">
+                    </div>
+                  </div>
+                  <br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

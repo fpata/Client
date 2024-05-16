@@ -1,5 +1,7 @@
 <div class="conatiner-fluid">
-    <ul class="nav nav-tabs nav-justified" id="tbpatient" role="tablist">
+  <!--Visible on medium and large screens only-->
+  <div class="d-none d-md-block d-lg-block">
+    <ul class="nav nav-tabs nav-justified flex-column flex-sm-row" id="tbpatient" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="tbPatientSearch-tab" data-bs-toggle="tab" data-bs-target="#tbPatientSearch"
           type="button" role="tab" aria-controls="tbPatientSearch" aria-selected="true">Search</button>
@@ -26,6 +28,42 @@
           Documents</button>
       </li>
     </ul>
+  </div>
+<!--Visible on Small screens only-->
+  <div class="d-xs-block d-sm-block d-md-none d-lg-none">
+    <ul class="nav nav-tabs nav-justified flex-column flex-sm-row" id="tbpatient" role="tablist">
+      <li class="nav-item dropdown" role="presentation">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Patient</a>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" id="tbPatientSearch-tab1" data-bs-toggle="tab" data-bs-target="#tbPatientSearch"
+             aria-controls="tbPatientSearch" aria-selected="true">Search</a>
+          </li>
+          <li>
+            <a class="nav-link" id="tbPersonalInfo-tab1" data-bs-toggle="tab" data-bs-target="#tbPersonalInfo"
+          aria-controls="tbPersonalInfo" aria-selected="false">Perosnal Information</a>
+          </li>
+          <li>
+            <a class="nav-link" id="tbPatientHistory-tab1" data-bs-toggle="tab" data-bs-target="#tbPatientHistory"
+             aria-controls="tbPatientHistory" aria-selected="false">Patient History</a>
+          </li>
+          <li>
+            <a class="nav-link" id="tbPatientTreatment-tab1" data-bs-toggle="tab" data-bs-target="#tbPatientTreatment"
+          aria-controls="tbPatientTreatment" aria-selected="false">Patient Treatment</a>
+          </li>
+          <li>
+            <a class="nav-link" id="tbPatientAppointment-tab1" data-bs-toggle="tab" data-bs-target="#tbPatientAppointment"
+           aria-controls="tbPatientAppointment" aria-selected="false">Patient Appointment</a>
+          </li>
+          <li>
+            <a class="nav-link" id="tbPatientReports-tab" data-bs-toggle="tab" data-bs-target="#tbPatientReport" 
+            aria-controls="tbPatientReport" aria-selected="false">Patient Reports
+            Documents</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
     <div class="tab-content" id="nav-tabContentPatientInfo">
       <div class="tab-pane fade show active" id="tbPatientSearch" role="tabpanel" aria-labelledby="tbPatientSearch-tab">
         <app-patient-search></app-patient-search>
@@ -54,7 +92,7 @@
     </div>
   </div>
   <br/>
-  <div class="conatiner">
+  <div class="conatiner-fluid">
     <div class="row">
       <div class="col">
         <button type="button" id="btnPatientSave" class="btn btn-primary" style="width: 25%;">Save</button>
