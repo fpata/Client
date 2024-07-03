@@ -15,14 +15,14 @@
                 <label for="txtFirstName" class="form-label">First Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtFirstName" class="form-control" required>
+                <input type="text" id="txtFirstName" class="form-control" required [(ngModel)]="patient.FirstName">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtLastName" class="form-label">Last Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtLastName" class="form-control" required>
+                <input type="text" id="txtLastName" class="form-control" required [(ngModel)]="patient.LastName">
               </div>
             </div>
             
@@ -32,16 +32,16 @@
                 <label for="txtAge" class="form-label">Age</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="number" id="txtAge" class="form-control" required>
+                <input type="number" id="txtAge" class="form-control" required [(ngModel)]="patient.Age">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="rdGenderMale" class="form-label">Gender</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="radio" id="rdGenderMale" name="gender" class="form-check-input" value="Male">
+                <input type="radio" id="rdGenderMale" name="gender" class="form-check-input" value="1" [checked]="this.patient.Gender == 1?true:false" (selectionchange)="OnGenderChanged(1)">
                 <label class="form-check-label" for="rdGenderMale">Male</label>&nbsp;&nbsp;
-                <input type="radio" id="rdGenderFemale" name="gender" class="form-check-input" value="Female">
+                <input type="radio" id="rdGenderFemale" name="gender" class="form-check-input" value="0" [checked]="this.patient.Gender == 0?true:false" (selectionchange)="OnGenderChanged(0)">
                 <label class="form-check-label" for="rdGenderFemale">Female</label>
               </div>
             </div>
@@ -76,21 +76,22 @@
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="tbPermanantAddress" role="tabpanel"
                 aria-labelledby="tbPermanantAddress-tab">
+                <br />
                 <div class="row">
-                  <div class="col-3">
-                    <label for="txtPermAddress1" class="form-label">Addresss Line 1</label>
+                  <div class="col-2">
+                    <label for="txtPermAddress1" class="form-label">Address Line 1</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtPermAddress1" class="form-control">
+                    <input type="text" id="txtPermAddress1" class="form-control" [(ngModel)]="this.patient.PermAddress1">
                   </div>
                 </div>
                <br />
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-2">
                     <label for="txtPermAddress2" class="form-label">Address Line 2</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtPermAddress2" class="form-control">
+                    <input type="text" id="txtPermAddress2" class="form-control" [(ngModel)]="this.patient.PermAddress2">
                   </div>
                 </div>
                 <br/>
@@ -99,14 +100,14 @@
                     <label for="txtPermCity" class="form-label">City</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermCity" class="form-control">
+                    <input type="text" id="txtPermCity" class="form-control" [(ngModel)]="this.patient.PermCity">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtPermState" class="form-label">State</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermState" class="form-control">
+                    <input type="text" id="txtPermState" class="form-control" [(ngModel)]="this.patient.PermState">
                   </div>
                 </div>
                 <br />
@@ -115,34 +116,35 @@
                     <label for="txtPermCountry" class="form-label">Country</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermCountry" class="form-control">
+                    <input type="text" id="txtPermCountry" class="form-control" [(ngModel)]="this.patient.PermCountry">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtPermZipCode" class="form-label">Zip Code</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermZipCode" class="form-control">
+                    <input type="text" id="txtPermZipCode" class="form-control" [(ngModel)]="this.patient.PermPostalCode">
                   </div>
                 </div>
               </div>
   
               <div class="tab-pane fade" id="tbCorespondenceAddress" role="tabpanel"
                 aria-labelledby="tbCorespondenceAddress-tab">
+                <br />
                 <div class="row">
-                  <div class="col-3">
-                    <label for="txtCorsAddress1" class="form-label">Addresss Line 1</label>
+                  <div class="col-2">
+                    <label for="txtCorsAddress1" class="form-label">Address Line 1</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtCorsAddress1" class="form-control">
+                    <input type="text" id="txtCorsAddress1" class="form-control" [(ngModel)]="this.patient.CorrAddress1">
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-2">
                     <label for="txtCorsAddress2" class="form-label">Address Line 2</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtCorsAddress2" class="form-control">
+                    <input type="text" id="txtCorsAddress2" class="form-control" [(ngModel)]="this.patient.CorrAddress2">
                   </div>
                 </div>
                 <div class="row">
@@ -150,14 +152,14 @@
                     <label for="txtCorsCity" class="form-label">City</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsCity" class="form-control">
+                    <input type="text" id="txtCorsCity" class="form-control" [(ngModel)]="this.patient.CorrCity">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
-                    <label for="txtCorsState" class="form-label">State</label>
+                    <label for="txtCorsState" class="form-label" >State</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsState" class="form-control">
+                    <input type="text" id="txtCorsState" class="form-control" [(ngModel)]="this.patient.CorrState">
                   </div>
                 </div>
                 <br />
@@ -166,14 +168,14 @@
                     <label for="txtCorsCountry" class="form-label">Country</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsCountry" class="form-control">
+                    <input type="text" id="txtCorsCountry" class="form-control" [(ngModel)]="this.patient.CorrCountry">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtCorsZipCode" class="form-label">Zip Code</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsZipCode" class="form-control">
+                    <input type="text" id="txtCorsZipCode" class="form-control" [(ngModel)]="this.patient.CorrPostalCode">
                   </div>
                 </div>
               </div>
@@ -199,14 +201,14 @@
                 <label for="txtPrimaryPhone" class="form-label">Primary Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtPrimaryPhone" class="form-control">
+                <input type="text" id="txtPrimaryPhone" class="form-control" [(ngModel)]="this.patient.PrimaryPhone">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtSecondaryPhone" class="form-label">Secondary Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtSecondaryPhone" class="form-control">
+                <input type="text" id="txtSecondaryPhone" class="form-control" [(ngModel)]="this.patient.SecondaryPhone">
               </div>
             </div>
             <br />
@@ -215,14 +217,14 @@
                 <label for="txtPrimaryEmail" class="form-label">Primary Email</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="email" id="txtPrimaryEmail" class="form-control" required>
+                <input type="email" id="txtPrimaryEmail" class="form-control" [(ngModel)]="this.patient.PrimaryEmail">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtSecondaryEmail" class="form-label">Secondary Email</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="email" id="txtSecondaryEmail" class="form-control">
+                <input type="email" id="txtSecondaryEmail" class="form-control" [(ngModel)]="this.patient.SecondaryEmail">
               </div>
             </div>
             </fieldset>
@@ -246,14 +248,14 @@
                 <label for="txtEmemergencyContactName" class="form-label">Emmergency Contact Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactName" class="form-control">
+                <input type="text" id="txtEmemergencyContactName" class="form-control" [(ngModel)]="this.patient.EmergencyContactName">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtEmemergencyContactRelation" class="form-label">Ememergency Contact Relation</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactRelation" class="form-control">
+                <input type="text" id="txtEmemergencyContactRelation" class="form-control" [(ngModel)]="this.patient.EmergencyContactRelation">
               </div>
             </div>
             <br />
@@ -262,14 +264,14 @@
                 <label for="txtEmemergencyContactEmail" class="form-label">Emmergency Contact Email</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactEmail" class="form-control">
+                <input type="text" id="txtEmemergencyContactEmail" class="form-control" [(ngModel)]="this.patient.EmergencyContactEmail">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtEmemergencyContactPhone" class="form-label">Ememergency Contact Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactPhone" class="form-control">
+                <input type="text" id="txtEmemergencyContactPhone" class="form-control" [(ngModel)]="this.patient.EmergencyContactPhone">
               </div>
             </div>
           </div>

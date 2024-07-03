@@ -13,6 +13,8 @@ import { PatientReportComponent } from './patient/patient-report/patient-report.
 import { PatientSearchComponent } from './patient/patient-search/patient-search.component';
 import { PatientTreatmentComponent } from './patient/patient-treatment/patient-treatment.component';
 import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-appointment.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-a
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
