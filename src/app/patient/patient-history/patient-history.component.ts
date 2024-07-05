@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Patient } from '../patient';
 
 @Component({
   selector: 'app-patient-history',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./patient-history.component.css']
 })
 export class PatientHistoryComponent {
+@Input() patient:Patient;
+
+constructor(){}
+
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Patient } from '../patient/patient';
+import { Patient, PatientSearch } from '../patient/patient';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
@@ -21,8 +21,16 @@ export class PatientService {
   this.httpClient.get(url,this.httpOptions).subscribe(response => {
    Object.assign(this.patient,JSON.parse(JSON.stringify(response)) as Patient);
   })
-
   return this.patient;
+  }
 
+  
+  searchPatient(searchPatient:PatientSearch):PatientSearch[] {
+    var url:string = "http://localhost:8088/users/SearchByParams/";
+    let searchResult:PatientSearch[] =[];
+    this.httpClient.post(url,searchPatient,this.httpOptions).subscribe(response =>{
+      Object.assign(searchResult,JSON.parse(JSON.stringify(response))as PatientSearch[])
+    });
+    return searchResult;
   }
 }

@@ -6,7 +6,7 @@
             <label for="txtDieseases" class="form-label">Any Dieseases</label>
         </div>
         <div class="col-10">
-            <textarea id="txtDieseases" class="form-control" row="2"></textarea>
+            <textarea id="txtDieseases" class="form-control" row="2" [(ngModel)]="this.patient.ExistingDieases"></textarea>
         </div>
     </div>
     <br />
@@ -15,7 +15,7 @@
             <label for="txtMedications" class="form-label">Medications</label>
         </div>
         <div class="col-10">
-            <textarea id="txtMedications" class="form-control" row="2"></textarea>
+            <textarea id="txtMedications" class="form-control" row="2" [(ngModel)]="this.patient.Medications"></textarea>
         </div>
     </div>
     <br />
@@ -24,7 +24,7 @@
             <label for="txtAllergies" class="form-label">Allergies & Reactions</label>
         </div>
         <div class="col-10">
-            <textarea id="txtAllergies" class="form-control" row="2" required></textarea>
+            <textarea id="txtAllergies" class="form-control" row="2" [(ngModel)]="this.patient.Allergies" required></textarea>
         </div>
     </div>
     <br />
@@ -33,7 +33,7 @@
             <label for="txtFatherHistory" class="form-label">Father Medical History</label>
         </div>
         <div class="col-10">
-            <textarea id="txtFatherHistory" class="form-control" row="2"></textarea>
+            <textarea id="txtFatherHistory" class="form-control" row="2" [(ngModel)]="this.patient.FatherMedicalHistory"></textarea>
         </div>
     </div>
     <br />
@@ -42,7 +42,7 @@
             <label for="txtMotherHistory" class="form-label">Mother Medical History</label>
         </div>
         <div class="col-10">
-            <textarea id="txtMotherHistory" class="form-control" row="2"></textarea>
+            <textarea id="txtMotherHistory" class="form-control" row="2" [(ngModel)]="this.patient.MotherMedicalHistory"></textarea>
         </div>
     </div>
 </div>

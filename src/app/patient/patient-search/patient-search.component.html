@@ -36,14 +36,14 @@
         <label for="txtSearchPatientID" class="form-label">Patient ID</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchPatientID" class="form-control" [(ngModel)]="this.searchPatient.Id">
+        <input type="number" id="txtSearchPatientID" class="form-control" [(ngModel)]="this.searchPatient.Id">
       </div>
       <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
       <div class="col-xs-12 col-sm-5 col-md-2">
         <label for="txtSearchCity" class="form-label">City</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchCity" class="form-control" [(ngModel)]="this.searchPatient.City">
+        <input type="text" id="txtSearchCity" class="form-control" [(ngModel)]="this.searchPatient.PermCity">
       </div>
     </div>
     <div class="row">
@@ -69,21 +69,13 @@
         <th>Phone Number</th>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>John</td>
-          <td>Doe</td>
-          <td>Pune</td>
-          <td>joh.doe@test.com</td>
-          <td>1124324235</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jane</td>
-          <td>Doe</td>
-          <td>Pune</td>
-          <td>jane.doe@test.com</td>
-          <td>534654545463</td>
+        <tr  *ngFor="let patient of searchResult">
+          <td><a (click)="OnPatientIdClick(patient.Id)">{{patient.Id}}</a></td>
+          <td>{{patient.FirstName}}</td>
+          <td>{{patient.LastName}}</td>
+          <td>{{patient.PermCity}}</td>
+          <td>{{patient.PrimaryEmail}}</td>
+          <td>{{patient.PrimaryPhone}}</td>
         </tr>
       </tbody>
     </table>

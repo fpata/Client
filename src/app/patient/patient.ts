@@ -31,7 +31,13 @@ export class Patient {
 	EmergencyContactEmail:string; 
 	EmergencyContactPhone:string; 
 	EmergencyContactRelation :string; 
+	ExistingDieases:string;
+	Medications:string;
+	Allergies:string;
+	FatherMedicalHistory:string;
+	MotherMedicalHistory:string;
 }
+
 export class PatientSearch {
 	constructor(){}
 	Id:Number;
@@ -39,5 +45,5 @@ export class PatientSearch {
 	LastName :string; 
 	PrimaryPhone:string;
 	PrimaryEmail:string;
-	City:String;
+	PermCity:String;
 }

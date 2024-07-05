@@ -12,9 +12,6 @@ export class PatientPersonalInfoComponent {
 constructor(){
 }
 
-ngOnInit(){
-  console.log("At child component layer = "+ this.patient.FirstName) ;
-}
 
 OnGenderChanged(arg0: number) {
   this.patient.Gender = arg0;
