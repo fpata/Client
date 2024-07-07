@@ -36,7 +36,30 @@ export class Patient {
 	Allergies:string;
 	FatherMedicalHistory:string;
 	MotherMedicalHistory:string;
+	PatientReports:PatientReport[];
+	PatientTreatments:PatientTreatment[];
 }
+
+
+export class PatientReport  {
+	constructor(){}
+	Id:	 			number;
+	PatientId:	 	number;
+	ReportDate:	 	number;
+	ReportName:		string;
+	RepoprtFinding:	string;
+	DoctorName:	 	string;
+}
+
+export class PatientTreatment {
+	constructor(){}
+	Id:	 			number;
+	PatientId:	 	number;
+	ChiefComplaint:	string;
+	Observation:	string;
+	TreatmentPlan: 	string;
+}
+
 
 export class PatientSearch {
 	constructor(){}

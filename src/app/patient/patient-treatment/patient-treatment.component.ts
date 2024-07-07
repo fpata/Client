@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Patient, PatientTreatment } from '../patient';
 
 @Component({
   selector: 'app-patient-treatment',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./patient-treatment.component.css']
 })
 export class PatientTreatmentComponent {
-
+  @Input() treatments:PatientTreatment[];
+  constructor(){}
 }

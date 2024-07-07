@@ -19,12 +19,12 @@
         </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>10/01/2023</td>
-                <td>OPG</td>
-                <td>Doctor</td>
-                <td>1/4 carries</td>
-                <td>Downlaod</td>
+            <tr *ngFor="let report of this.reports">
+                <td>{{report.ReportDate}}</td>
+                <td>{{report.ReportName}}</td>
+                <td>{{report.DoctorName}}</td>
+                <td>{{report.RepoprtFinding}}</td>
+                <td>Download</td>
             </tr>
         </tbody>
     </table>
