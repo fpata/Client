@@ -70,7 +70,7 @@
       </div>
       
       <div class="tab-pane fade" id="tbPersonalInfo" role="tabpanel" aria-labelledby="tbPersonalInfo-tab">
-        <app-patient-personal-info [patient]="patient" ></app-patient-personal-info>
+       <div *ngIf="patient != undefined"> <app-patient-personal-info [patient]="patient" ></app-patient-personal-info></div>
       </div>
   
   
@@ -79,7 +79,7 @@
       </div>
   
       <div class="tab-pane fade" id="tbPatientTreatment" role="tabpanel" aria-labelledby="tbPatientTreatment-tab">
-        <app-patient-treatment [treatments]="patient.PatientTreatments"></app-patient-treatment>
+        <app-patient-treatment [treatments]="this.patient.PatientTreatments"></app-patient-treatment>
       </div>
   
       <div class="tab-pane fade" id="tbPatientAppointment" role="tabpanel" aria-labelledby="tbPatientAppointment-tab">

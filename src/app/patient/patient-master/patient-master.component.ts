@@ -19,6 +19,6 @@ constructor(private patientService:PatientService){
 
 ngOnInit()
 {
-
+  this.patient = this.patientService.getPatientById(2);
 }
 }

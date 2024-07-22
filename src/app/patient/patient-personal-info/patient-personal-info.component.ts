@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,NgModule } from '@angular/core';
 import { Patient } from '../patient';
 
 @Component({
