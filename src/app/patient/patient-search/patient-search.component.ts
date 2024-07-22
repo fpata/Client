@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,NgModule } from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { PatientSearch } from '../patient';
 import { PatientService } from 'src/app/services/patient.service';

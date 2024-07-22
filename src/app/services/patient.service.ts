@@ -16,7 +16,7 @@ export class PatientService {
    }
 
   getPatientById(patientId:Number):Patient {
-    var url:string = "http://localhost:8088/users/"+patientId;
+    var url:string = "http://localhost:8088/patients/"+patientId;
 
   this.httpClient.get(url,this.httpOptions).subscribe(response => {
    Object.assign(this.patient,JSON.parse(JSON.stringify(response)) as Patient);
@@ -26,7 +26,7 @@ export class PatientService {
 
   
   searchPatient(searchPatient:PatientSearch):PatientSearch[] {
-    var url:string = "http://localhost:8088/users/SearchByParams/";
+    var url:string = "http://localhost:8088/patients/SearchByParams/";
     let searchResult:PatientSearch[] =[];
     this.httpClient.post(url,searchPatient,this.httpOptions).subscribe(response =>{
       Object.assign(searchResult,JSON.parse(JSON.stringify(response))as PatientSearch[])

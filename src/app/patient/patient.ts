@@ -58,6 +58,17 @@ export class PatientTreatment {
 	ChiefComplaint:	string;
 	Observation:	string;
 	TreatmentPlan: 	string;
+	PatientTreatmentDetails: PatientTreatmentDetails[];
+}
+
+export class PatientTreatmentDetails {
+	constructor(){}
+	Id:	 			number;
+	PatientId:	 	number;
+	PatientTreatmentId:	 	number;
+	Tooth:	string;
+	Procedure:	string;
+	Advice: 	string;
 }
 
 
