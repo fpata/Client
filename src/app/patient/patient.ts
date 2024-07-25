@@ -38,6 +38,7 @@ export class Patient {
 	MotherMedicalHistory:string;
 	PatientReports:PatientReport[];
 	PatientTreatments:PatientTreatment[];
+	PatientAppointments:PatientAppointment[];
 }
 
 
@@ -71,6 +72,15 @@ export class PatientTreatmentDetails {
 	Advice: 	string;
 }
 
+export class PatientAppointment {
+	constructor(){}
+	Id:	 			number;
+	PatientId:	 	number;
+	Date:	 	string;
+	Time:		string;
+	NextDate:	string;
+	NextTime: 	string;
+}
 
 export class PatientSearch {
 	constructor(){}

@@ -25,21 +25,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>01/01/2023</td>
-                        <td>11:30 AM</td>
+                    <tr *ngFor="let appointment of appointments">
+                        <td>{{appointment.Date}}</td>
+                        <td>{{appointment.Time}}</td>
                         <td>John Doe</td>
                         <td>BMP</td>
-                        <td>10/01/2023</td>
-                        <td>11:30 AM</td>
-                    </tr>
-                    <tr>
-                        <td>10/01/2023</td>
-                        <td>10:30 AM</td>
-                        <td>John Doe</td>
-                        <td>F</td>
-                        <td>15/01/2023</td>
-                        <td>10:30 AM</td>
+                        <td>{{appointment.NextDate}}</td>
+                        <td>{{appointment.NextTime}}</td>
                     </tr>
                 </tbody>
             </table>

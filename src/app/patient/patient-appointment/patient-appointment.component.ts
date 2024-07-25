@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Patient } from '../patient';
+import { Patient, PatientAppointment } from '../patient';
 
 @Component({
   selector: 'app-patient-appointment',
@@ -7,9 +7,6 @@ import { Patient } from '../patient';
   styleUrls: ['./patient-appointment.component.css']
 })
 export class PatientAppointmentComponent {
-@Input() patient:Patient;
+@Input() appointments:PatientAppointment[];
   constructor(){}
-
-
-
 }
