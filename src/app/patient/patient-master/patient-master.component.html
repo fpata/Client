@@ -70,7 +70,7 @@
       </div>
       
       <div class="tab-pane fade" id="tbPersonalInfo" role="tabpanel" aria-labelledby="tbPersonalInfo-tab">
-       <div *ngIf="patient != undefined"> <app-patient-personal-info [patient]="patient" ></app-patient-personal-info></div>
+       <app-patient-personal-info [patient]="patient" ></app-patient-personal-info>
       </div>
   
   
@@ -95,16 +95,16 @@
   <div class="conatiner-fluid">
     <div class="row">
       <div class="col">
-        <button type="button" id="btnPatientSave" class="btn btn-primary" style="width: 25%;">Save</button>
+        <button type="button" id="btnPatientSave" class="btn btn-primary" style="width: 25%;" (click)="SavePatientInformation()">Save</button>
       </div>
       <div class="col">
-        <button type="button" id="btnPatientClear" class="btn btn-secondary" style="width: 25%;">Clear</button>
+        <button type="button" id="btnPatientClear" class="btn btn-secondary" style="width: 25%;" (click)="ClearPatientInformation()">Clear</button>
       </div>
       <div class="col">
-        <button type="button" id="btnPatientSearch" class="btn btn-secondary" style="width: 25%;">Search</button>
+        <button type="button" id="btnPatientSearch" class="btn btn-secondary" style="width: 25%;" (click)="SavePatientInformation()">Update</button>
       </div>
       <div class="col">
-        <button type="button" id="btnPatientDelete" class="btn btn-secondary" style="width: 25%;">Delete</button>
+        <button type="button" id="btnPatientDelete" class="btn btn-secondary" style="width: 25%;" (click)="DeletePatientInformation()">Delete</button>
       </div>
     </div>
     <br/>

@@ -15,6 +15,7 @@ constructor(){
 
 OnGenderChanged(arg0: number) {
   this.patient.Gender = arg0;
+  console.log(this.patient.Gender)
   }
   
 

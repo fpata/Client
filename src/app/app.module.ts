@@ -15,6 +15,8 @@ import { PatientTreatmentComponent } from './patient/patient-treatment/patient-t
 import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-appointment.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToasterContainerComponent } from './common/toaster-container/toaster-container.component'
+import { ToastComponent } from './common/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FormsModule } from '@angular/forms';
     PatientReportComponent,
     PatientSearchComponent,
     PatientTreatmentComponent,
-    DoctorAppointmentComponent
+    DoctorAppointmentComponent,
+    ToastComponent,
+    ToasterContainerComponent
   ],
   imports: [
     BrowserModule,

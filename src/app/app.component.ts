@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { ToasterContainerComponent } from './common/toaster-container/toaster-container.component';
+import { ToastService } from './common/toaster.service';
+import { EventTypes } from './common/toast-event';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,4 +10,25 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'clinic_client';
+
+  EventTypes = EventTypes;
+
+  constructor(private toastService: ToastService) {}
+
+  showToast(type: EventTypes) {
+    switch (type) {
+      case EventTypes.Success:
+        this.toastService.showSuccessToast('Success toast title', 'This is a success toast message.');
+        break;
+      case EventTypes.Warning:
+        this.toastService.showWarningToast('Warning toast title', 'This is a warning toast message.');
+        break;
+      case EventTypes.Error:
+        this.toastService.showErrorToast('Error toast title', 'This is an error toast message.');
+        break;
+      default:
+        this.toastService.showInfoToast('Info toast title', 'This is an info toast message.');
+        break;
+    }
+  }
 }

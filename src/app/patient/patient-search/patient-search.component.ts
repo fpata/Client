@@ -29,8 +29,9 @@ export class PatientSearchComponent {
     }
     else
     {
-      this.searchResult = this.patientService.searchPatient(this.searchPatient)  
-      console.log(this.searchResult)
+      this.searchResult = this.patientService.searchPatient(this.searchPatient) ;
+      
+      console.log(this.searchResult);
     }
 
 }

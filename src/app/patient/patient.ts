@@ -48,7 +48,7 @@ export class PatientReport  {
 	PatientId:	 	number;
 	ReportDate:	 	number;
 	ReportName:		string;
-	RepoprtFinding:	string;
+	ReportFinding:	string;
 	DoctorName:	 	string;
 }
 
