@@ -15,8 +15,8 @@ import { PatientTreatmentComponent } from './patient/patient-treatment/patient-t
 import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-appointment.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ToasterContainerComponent } from './common/toaster-container/toaster-container.component'
-import { ToastComponent } from './common/toast/toast.component';
+import { ToasterContainerComponent } from './common/toastcomponent/toaster-container/toaster-container.component'
+import { ToastComponent } from './common/toastcomponent/toast/toast.component';
 
 @NgModule({
   declarations: [

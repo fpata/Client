@@ -1,30 +1,31 @@
+<form class="was-validated">
 <div class="conatiner-fluid">
   <!--Visible on medium and large screens only-->
   <div class="d-none d-md-block d-lg-block">
     <ul class="nav nav-tabs nav-justified flex-column flex-sm-row" id="tbpatient" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="tbPatientSearch-tab" data-bs-toggle="tab" data-bs-target="#tbPatientSearch"
-          type="button" role="tab" aria-controls="tbPatientSearch" aria-selected="true">Search</button>
+          type="button" role="tab" aria-controls="tbPatientSearch" aria-selected="true" (click)="tabSelectedEvent($event)">Search</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tbPersonalInfo-tab" data-bs-toggle="tab" data-bs-target="#tbPersonalInfo"
-          type="button" role="tab" aria-controls="tbPersonalInfo" aria-selected="false">Perosnal Information</button>
+          type="button" role="tab" aria-controls="tbPersonalInfo" aria-selected="false" (click)="tabSelectedEvent($event)">Perosnal Information</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tbPatientHistory-tab" data-bs-toggle="tab" data-bs-target="#tbPatientHistory"
-          type="button" role="tab" aria-controls="tbPatientHistory" aria-selected="false">Patient History</button>
+          type="button" role="tab" aria-controls="tbPatientHistory" aria-selected="false" (click)="tabSelectedEvent($event)">Patient History</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tbPatientTreatment-tab" data-bs-toggle="tab" data-bs-target="#tbPatientTreatment"
-          type="button" role="tab" aria-controls="tbPatientTreatment" aria-selected="false">Patient Treatment</button>
+          type="button" role="tab" aria-controls="tbPatientTreatment" aria-selected="false" (click)="tabSelectedEvent($event)">Patient Treatment</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tbPatientAppointment-tab" data-bs-toggle="tab" data-bs-target="#tbPatientAppointment"
-          type="button" role="tab" aria-controls="tbPatientAppointment" aria-selected="false">Patient Appointment</button>
+          type="button" role="tab" aria-controls="tbPatientAppointment" aria-selected="false" (click)="tabSelectedEvent($event)">Patient Appointment</button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tbPatientReports-tab" data-bs-toggle="tab" data-bs-target="#tbPatientReport"
-          type="button" role="tab" aria-controls="tbPatientReport" aria-selected="false">Patient Reports
+          type="button" role="tab" aria-controls="tbPatientReport" aria-selected="false" (click)="tabSelectedEvent($event)">Patient Reports
           Documents</button>
       </li>
     </ul>
@@ -64,6 +65,7 @@
       </li>
     </ul>
   </div>
+ 
     <div class="tab-content" id="nav-tabContentPatientInfo">
       <div class="tab-pane fade show active" id="tbPatientSearch" role="tabpanel" aria-labelledby="tbPatientSearch-tab">
         <app-patient-search></app-patient-search>
@@ -93,22 +95,25 @@
   </div>
   <br/>
   <div class="conatiner-fluid">
-    <div class="row">
+    <div class="row" *ngIf="!isSearchTabSelected" >
       <div class="col">
-        <button type="button" id="btnPatientSave" class="btn btn-primary" style="width: 25%;" (click)="SavePatientInformation()">Save</button>
+        <button type="submit" id="btnPatientSave" class="btn btn-primary" style="width: 25%;" (click)="SavePatientInformation()">Save</button>
       </div>
       <div class="col">
         <button type="button" id="btnPatientClear" class="btn btn-secondary" style="width: 25%;" (click)="ClearPatientInformation()">Clear</button>
       </div>
       <div class="col">
-        <button type="button" id="btnPatientSearch" class="btn btn-secondary" style="width: 25%;" (click)="SavePatientInformation()">Update</button>
-      </div>
-      <div class="col">
         <button type="button" id="btnPatientDelete" class="btn btn-secondary" style="width: 25%;" (click)="DeletePatientInformation()">Delete</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" *ngIf="isSearchTabSelected">
+        <button type="button" id="btnNewPatient" class="btn btn-primary" style="width: 25%;" (click)="AddNewPatient()">New Patient</button>
       </div>
     </div>
     <br/>
   </div>
+</form>
   <br />
   <br />
   <br />

@@ -1,7 +1,7 @@
 
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ToastEvent } from '../../common/toast-event';
+import { ToastEvent } from '../toast-event';
 import { ToastService } from '../toaster.service';
 
 @Component({

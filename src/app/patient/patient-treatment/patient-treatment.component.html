@@ -1,3 +1,9 @@
+<div class="row">
+  <div class="col-12" style="text-align: end;align-items: end;align-content: end;">
+    <button type="button" id="btnAddChiefComplaint" class="btn btn-primary" (click)="AddChiefComplain()">Add Chielf Complaint</button>
+  </div>
+</div>
+<br />
 <div *ngFor="let treatment of treatments">
 <div class="accordion" id="accTreatmentPlan">
     <div class="accordion-item">
@@ -48,7 +54,7 @@
                                 <th></th>
                                 <th></th>
                                 <th style="text-align: right;"><button type="button" class="btn btn-primary"
-                                        data-bs-toggle="modal" data-bs-target="#addTreatmentModal">Add Row</button></th>
+                                        data-bs-toggle="modal" data-bs-target="#addTreatmentModal" data-id="{{treatment.Id}}">Add Row</button></th>
                             </tr>
                             <tr>
                                 <th>Date</th>
@@ -75,8 +81,15 @@
         </div>
     </div>
 </div>
+<div class="row">
+  <div class="col-12" style="text-align: end;align-items: end;align-content: end;">
+    <button type="button" id="btnRemoveComplaint" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#removeChiefComplaint"> Remove Chief Complain Section</button>
+  </div>
 </div>
-<!-- Modal -->
+<br>
+<br>
+</div>
+<!-- Modal Add Treatment -->
 <div class="modal fade" data-bs-keyboard="false" data-bs-backdrop="static"  id="addTreatmentModal" tabindex="-1" aria-labelledby="addTreatmentModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -124,9 +137,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddTreatmentDetails(this)" >Add Treatment</button>
             </div>
         </div>
     </div>
 </div>
-
+<!-- Modal Remove Chief complaint -->
+<div class="modal fade" data-bs-keyboard="false" data-bs-backdrop="static" id="removeChiefComplaint" tabindex="-1" aria-labelledby="removeChiefComplaintlbl" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="removeComplaintLabel">Confirm Deletion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Confirm: Are you sure you want to delete the chief complain? <br>
+           Once deleted the information cannot be retained.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="RemoveChiefComplain()" >Confirm Remove</button>
+      </div>
+    </div>
+  </div>
+</div>

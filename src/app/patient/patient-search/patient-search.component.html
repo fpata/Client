@@ -4,14 +4,14 @@
         <label for="txtSearchFirstName" class="form-label">First Name</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchFirstName" class="form-control" [(ngModel)]="this.searchPatient.FirstName">
+        <input type="text" id="txtSearchFirstName" class="form-control" [(ngModel)]="this.searchPatient.FirstName" minlength="3" maxlength="25" (ngModelChange)="validateSearchInput()">
       </div>
       <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
       <div class="col-xs-12 col-sm-5 col-md-2">
         <label for="txtSearchLastName" class="form-label">Last Name</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchLastName" class="form-control" [(ngModel)]="this.searchPatient.LastName">
+        <input type="text" id="txtSearchLastName" class="form-control" [(ngModel)]="this.searchPatient.LastName" minlength="3" maxlength="25" (ngModelChange)="validateSearchInput()">
       </div>
     </div>
     <br />
@@ -20,14 +20,14 @@
         <label for="txtSearchPhone" class="form-label">Phone</label>
       </div>
       <div class="ccol-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchPhone" class="form-control" [(ngModel)]="this.searchPatient.PrimaryPhone">
+        <input type="text" id="txtSearchPhone" class="form-control" [(ngModel)]="this.searchPatient.PrimaryPhone" minlength="3" maxlength="25" (ngModelChange)="validateSearchInput()">
       </div>
       <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
       <div class="col-xs-12 col-sm-5 col-md-2">
         <label for="txtSearchEmailAddress" class="form-label">Email Address</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchEmailAddress" class="form-control" [(ngModel)]="this.searchPatient.PrimaryEmail">
+        <input type="text" id="txtSearchEmailAddress" class="form-control" [(ngModel)]="this.searchPatient.PrimaryEmail" minlength="3" maxlength="25" (ngModelChange)="validateSearchInput()">
       </div>
     </div>
     <br />
@@ -43,7 +43,7 @@
         <label for="txtSearchCity" class="form-label">City</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="text" id="txtSearchCity" class="form-control" [(ngModel)]="this.searchPatient.PermCity">
+        <input type="text" id="txtSearchCity" class="form-control" [(ngModel)]="this.searchPatient.PermCity" minlength="3" maxlength="25" (ngModelChange)="validateSearchInput()">
       </div>
     </div>
     <div class="row">
@@ -53,6 +53,10 @@
       <div class="col-xs-12 col-sm-6 col-md-6">
         <button type="button" id="btnSaerchPatient" class="btn btn-secondary" (click)="clearSearch()">Clear Search</button>
       </div>
+    </div>
+    <br>
+    <div *ngIf="searchLengthConstraintError" class="row">
+      <div class="col-12" style="background-color: cornflowerblue;color: white"><label class="align-center" >Search Error: Atleast 3 characters should be entered in any one field</label></div>
     </div>
   </div>
 <br />
@@ -70,12 +74,15 @@
       </thead>
       <tbody>
         <tr  *ngFor="let patient of searchResult">
-          <td><a (click)="OnPatientIdClick(patient.Id)">{{patient.Id}}</a></td>
+          <td><a style="  text-decoration: underline solid blue 1px;cursor:pointer;" (click)="OnPatientIdClick(patient.Id)">{{patient.Id}}</a></td>
           <td>{{patient.FirstName}}</td>
           <td>{{patient.LastName}}</td>
           <td>{{patient.PermCity}}</td>
           <td>{{patient.PrimaryEmail}}</td>
           <td>{{patient.PrimaryPhone}}</td>
+        </tr>
+        <tr *ngIf="searchResult != undefined && searchResult.length == 0 && clearSearchClicked==false">
+          <td colspan="6"><label id="lblNoRecordsError">No record found matching the search criteria</label></td>
         </tr>
       </tbody>
     </table>

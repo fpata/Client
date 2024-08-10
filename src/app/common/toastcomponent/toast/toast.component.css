@@ -1,0 +1,15 @@
+.success {
+  background-color: #61ac89;
+}
+
+.info {
+  background-color: #3f5e8d;
+}
+
+.warning {
+  background-color: #a08943;
+}
+
+.error {
+  background-color:rgb(159, 159, 207);
+}

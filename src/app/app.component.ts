@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ToasterContainerComponent } from './common/toaster-container/toaster-container.component';
-import { ToastService } from './common/toaster.service';
-import { EventTypes } from './common/toast-event';
+import { ToasterContainerComponent } from './common/toastcomponent/toaster-container/toaster-container.component';
+import { ToastService } from './common/toastcomponent/toaster.service';
+import { EventTypes } from './common/toastcomponent/toast-event';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

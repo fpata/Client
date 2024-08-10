@@ -15,14 +15,15 @@
                 <label for="txtFirstName" class="form-label">First Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtFirstName" class="form-control" required [(ngModel)]="this.patient.FirstName">
+                <input type="text" id="txtFirstName" class="form-control" required [(ngModel)]="this.patient.FirstName" minlength="3" maxlength="50">
+                <div class="invalid-feedback">Please fill out this field.</div>
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtLastName" class="form-label">Last Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtLastName" class="form-control" required [(ngModel)]="this.patient.LastName">
+                <input type="text" id="txtLastName" class="form-control" required [(ngModel)]="this.patient.LastName" minlength="3" maxlength="50">
               </div>
             </div>
             
@@ -32,7 +33,7 @@
                 <label for="txtAge" class="form-label">Age</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="number" id="txtAge" class="form-control" required [(ngModel)]="patient.Age">
+                <input type="number" id="txtAge" class="form-control" required [(ngModel)]="patient.Age" min="0" max="150">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
@@ -132,6 +133,11 @@
                 aria-labelledby="tbCorespondenceAddress-tab">
                 <br />
                 <div class="row">
+                  <div class="col-12" style="align-content:end;align-items: end;text-align: end;">
+                    <label type="button" style="color: cornflowerblue;cursor: pointer;" (click)="CopyAddress()">Same as correspondence address</label>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-2">
                     <label for="txtCorsAddress1" class="form-label">Address Line 1</label>
                   </div>
@@ -139,6 +145,7 @@
                     <input type="text" id="txtCorsAddress1" class="form-control" [(ngModel)]="this.patient.CorrAddress1">
                   </div>
                 </div>
+                <br />
                 <div class="row">
                   <div class="col-2">
                     <label for="txtCorsAddress2" class="form-label">Address Line 2</label>
@@ -147,6 +154,7 @@
                     <input type="text" id="txtCorsAddress2" class="form-control" [(ngModel)]="this.patient.CorrAddress2">
                   </div>
                 </div>
+                <br />
                 <div class="row">
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtCorsCity" class="form-label">City</label>
@@ -201,7 +209,7 @@
                 <label for="txtPrimaryPhone" class="form-label">Primary Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtPrimaryPhone" class="form-control" [(ngModel)]="this.patient.PrimaryPhone">
+                <input type="text" id="txtPrimaryPhone" class="form-control" [(ngModel)]="this.patient.PrimaryPhone" required>
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
