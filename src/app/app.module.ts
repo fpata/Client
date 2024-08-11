@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToasterContainerComponent } from './common/toastcomponent/toaster-container/toaster-container.component'
 import { ToastComponent } from './common/toastcomponent/toast/toast.component';
+import { ModalComponent } from './common/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { ToastComponent } from './common/toastcomponent/toast/toast.component';
     PatientTreatmentComponent,
     DoctorAppointmentComponent,
     ToastComponent,
-    ToasterContainerComponent
+    ToasterContainerComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

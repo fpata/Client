@@ -59,10 +59,10 @@ export class PatientTreatment {
 	ChiefComplaint:	string;
 	Observation:	string;
 	TreatmentPlan: 	string;
-	PatientTreatmentDetails: PatientTreatmentDetails[];
+	PatientTreatmentDetails: PatientTreatmentDetail[];
 }
 
-export class PatientTreatmentDetails {
+export class PatientTreatmentDetail {
 	constructor(){}
 	Id:	 			number;
 	PatientId:	 	number;
@@ -70,6 +70,7 @@ export class PatientTreatmentDetails {
 	Tooth:	string;
 	Procedure:	string;
 	Advice: 	string;
+	TreatmentDate: string;
 }
 
 export class PatientAppointment {

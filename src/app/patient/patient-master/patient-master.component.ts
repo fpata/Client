@@ -26,8 +26,12 @@ ngOnInit()
 
 ClearPatientInformation() {
   this.patient = new Patient();
+  this.patient.Id = -1;
   this.patient.PatientTreatments = new Array<PatientTreatment>();
-  this.patient.PatientTreatments.push(new PatientTreatment());
+  var patientTreatment:PatientTreatment = new PatientTreatment();
+  patientTreatment.Id = -1;
+  this.patient.PatientTreatments.push(patientTreatment);
+
   }
   
   SavePatientInformation() {

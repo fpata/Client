@@ -1,0 +1,62 @@
+<div class="modal" id="genericModal" tabindex="-1" aria-labelledby="genericModallbl"  role="dialog" *ngIf="open" style="display:block;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">{{ config.title }}</h5>
+        </div>
+        <div class="modal-body">
+        <p>  {{config.description}} </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"   (click)="discardWrapper($event)">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"   (click)="confirmWrapper($event)" >Confirm Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  *ngIf="open"
+  style="display:block;"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ config.title }}</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="discardWrapper($event)"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ config.description }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="confirmWrapper($event)"
+        >
+          Confirm Action
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="discardWrapper($event)"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
