@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Patient, PatientTreatment, PatientTreatmentDetail } from '../patient';
 import { ModalService } from 'src/app/common/modal/modal.service';
 import { Element } from '@angular/compiler';
+import { ModalConfig } from 'src/app/common/modal/modal.component';
 
 @Component({
   selector: 'app-patient-treatment',
@@ -17,8 +18,14 @@ export class PatientTreatmentComponent {
 
 AddChiefComplain() {
    var patientTreatment:PatientTreatment = new PatientTreatment();
+   if(this.treatments === undefined || this.treatments?.length === 0){
+    this.treatments = new Array<PatientTreatment>();
+     patientTreatment.Id = -1;
+   }
+   else{
    var minVal = Math.min(...this.treatments.map(x => x.Id));
-   patientTreatment.Id = minVal + (-1);
+   patientTreatment.Id = --minVal;
+   }
   this.treatments.push(patientTreatment);
   }
 
@@ -44,8 +51,11 @@ RemoveChiefComplain(id:number) {
       this.treatments[index].PatientTreatmentDetails = new Array<PatientTreatmentDetail>();
     }
     var treatmentDetail:PatientTreatmentDetail = new PatientTreatmentDetail();
-    treatmentDetail.Id = -1;
-    treatmentDetail.PatientId = -1;
+    if(this.treatments[index].PatientTreatmentDetails.length === 0)
+      treatmentDetail.Id = -1;
+    else  
+    treatmentDetail.Id = (Math.min(...this.treatments[index].PatientTreatmentDetails.map(x => x.Id)) + (-1));
+    treatmentDetail.PatientId = this.treatments[0].PatientId;
     treatmentDetail.PatientTreatmentId = treatmentId;
     treatmentDetail.Tooth=  (document.getElementById('txtTooth') as HTMLInputElement).value;
     treatmentDetail.Procedure = (document.getElementById('txtProcedure') as HTMLInputElement).value;
@@ -59,12 +69,21 @@ RemoveChiefComplain(id:number) {
     hdIdElement.value = Id;
   }
 
-  DeleteTreatmentDetails(treatmentdetailsId: number,PatientTreatmentId: number) {
-    throw new Error('Method not implemented.');
-    }
+  DeleteTreatmentDetails(treatmentId: number,treatmentdetailId: number) {
+    var patientTreatmentIndex = this.treatments.findIndex(x=> x.Id === treatmentId);
+    var index = this.treatments[patientTreatmentIndex].PatientTreatmentDetails.findIndex(x=> x.Id === treatmentdetailId);
+    this.treatments[patientTreatmentIndex].PatientTreatmentDetails.splice(index,1);
+  }
     
-    EditTreatmentDetails(treatmentdetailsId: number,PatientTreatmentId: number) {
-    throw new Error('Method not implemented.');
+    EditTreatmentDetails(treatmentId: number, treatmentdetailId: number,) {
+      document.getElementById("addTreatmentModal")?.click();
+      var patientTreatmentIndex = this.treatments.findIndex(x=> x.Id === treatmentId);
+      var index = this.treatments[patientTreatmentIndex].PatientTreatmentDetails.findIndex(x=> x.Id === treatmentdetailId);
+      var treatmentDetail:PatientTreatmentDetail = this.treatments[patientTreatmentIndex].PatientTreatmentDetails[index];
+
+      (document.getElementById('txtTooth') as HTMLInputElement).value = treatmentDetail.Tooth;
+      (document.getElementById('txtProcedure') as HTMLInputElement).value = treatmentDetail.Procedure ;
+      (document.getElementById('txtAdvice') as HTMLInputElement).value = treatmentDetail.Advice;
+      (document.getElementById('txtTreatmentDate') as HTMLInputElement).value = treatmentDetail.TreatmentDate;      
     }
-    
 }

@@ -46,7 +46,7 @@ export class PatientReport  {
 	constructor(){}
 	Id:	 			number;
 	PatientId:	 	number;
-	ReportDate:	 	number;
+	ReportDate:	 	string;
 	ReportName:		string;
 	ReportFinding:	string;
 	DoctorName:	 	string;

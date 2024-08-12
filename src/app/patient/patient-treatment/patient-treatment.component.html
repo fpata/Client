@@ -66,15 +66,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let treatmentdetails of treatment.PatientTreatmentDetails">
+                            <tr *ngFor="let treatmentdetail of treatment.PatientTreatmentDetails">
                               <td>
-                               <button class="btn btn-primary" (click)="EditTreatmentDetails(treatmentdetails.Id, treatmentdetails.PatientTreatmentId)"> <i class="fa fa-edit"></i>&nbsp;Edit</button>
-                               &nbsp;&nbsp;<button class="btn btn-secondary" (click)="DeleteTreatmentDetails(treatmentdetails.Id, treatmentdetails.PatientTreatmentId)"><i class="fa fa-trash-o"></i>&nbsp;Delete</button>
+                               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTreatmentModal" (click)="EditTreatmentDetails(treatment.Id, treatmentdetail.Id)">&nbsp;Edit</button>
+                               &nbsp;&nbsp;<button class="btn btn-secondary" (click)="DeleteTreatmentDetails(treatment.Id, treatmentdetail.Id)">&nbsp;Delete</button>
                               </td>  
-                              <td>01/01/2023</td>
-                                <td>{{treatmentdetails.Tooth}}</td>
-                                <td>{{treatmentdetails.Procedure}}</td>
-                                <td>{{treatmentdetails.Advice}}</td>
+                                <td>{{treatmentdetail.TreatmentDate}}</td>
+                                <td>{{treatmentdetail.Tooth}}</td>
+                                <td>{{treatmentdetail.Procedure}}</td>
+                                <td>{{treatmentdetail.Advice}}</td>
                             </tr>
                         </tbody>
                     </table>
