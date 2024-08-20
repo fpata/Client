@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -17,7 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { ToasterContainerComponent } from './common/toastcomponent/toaster-container/toaster-container.component'
 import { ToastComponent } from './common/toastcomponent/toast/toast.component';
 import { ModalComponent } from './common/modal/modal.component';
-
+import { CalendarComponent } from './common/calendar/calendar.component';
+import { CalendarHeaderComponent } from './common/calendar/calender-header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,13 +38,20 @@ import { ModalComponent } from './common/modal/modal.component';
     DoctorAppointmentComponent,
     ToastComponent,
     ToasterContainerComponent,
-    ModalComponent
+    ModalComponent,
+    CalendarComponent,
+    CalendarHeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+     provide: DateAdapter,
+     useFactory: adapterFactory,
+      }),
   ],
   providers: [],
   bootstrap: [AppComponent]

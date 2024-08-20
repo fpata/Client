@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Patient, PatientAppointment } from '../patient';
+import { CalendarComponent } from 'src/app/common/calendar/calendar.component';
 
 @Component({
   selector: 'app-patient-appointment',
