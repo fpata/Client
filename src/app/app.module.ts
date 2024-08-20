@@ -23,6 +23,8 @@ import { ToastComponent } from './common/toastcomponent/toast/toast.component';
 import { ModalComponent } from './common/modal/modal.component';
 import { CalendarComponent } from './common/calendar/calendar.component';
 import { CalendarHeaderComponent } from './common/calendar/calender-header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,9 @@ import { CalendarHeaderComponent } from './common/calendar/calender-header.compo
     ToasterContainerComponent,
     ModalComponent,
     CalendarComponent,
-    CalendarHeaderComponent
+    CalendarHeaderComponent,
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

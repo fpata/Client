@@ -1,0 +1,25 @@
+<div class="container">
+<fieldset  class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
+<div class="row">
+    <div class="col" style="align-items: center;align-items:center;">
+        <h3>Welcome to Relief Dental Clinic</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3"><label for="txtUsername">Username</label></div>
+    <div class="col-5"><input type="email" id="txtUsername" class="form-control" placeholder="enter email address" required minlength="3" maxlength="50" [(ngModel)]="Username"/> </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-3"><label for="txtPassword">Password</label></div>
+    <div class="col-5"><input type="password" class="form-control" required minlength="3" maxlength="50" [(ngModel)]="Password"/> </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-4"><button id="btnSubmit" type="submit" class="btn btn-primary" (click)="Login()">Submit</button></div>
+    <div class="col-2"></div>
+    <div class="col-4"><button id="btnReset" type="reset" class="btn btn-secondary" (click)="Reset()">Reset</button> </div>
+</div>
+</fieldset>
+</div>
+<br />
