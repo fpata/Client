@@ -20,6 +20,16 @@
     <div class="col-2"></div>
     <div class="col-4"><button id="btnReset" type="reset" class="btn btn-secondary" (click)="Reset()">Reset</button> </div>
 </div>
+<br>
+<div *ngIf="IsAuthError" class="row">
+    <div class="col">
+        <label style="color: red;" id="lblAuthMessage">
+            Unauthorized: Either Username or password is not correct 
+        </label> <br>
+        <a href="#">Forgot Password</a>
+    </div>
+</div>
 </fieldset>
+
 </div>
 <br />
