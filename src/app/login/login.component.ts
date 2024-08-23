@@ -26,7 +26,7 @@ Login() {
   this.loginservice.ValidateLogin(this.Username, this.Password).subscribe(
     (res) => { result = res.Id;  
     if(result > 0 ){
-       this.router.navigate(['/patient?Id='+result]);
+       this.router.navigate(['/patient/'+result]);
       } else {
         this.Username='';
         this.Password = '';

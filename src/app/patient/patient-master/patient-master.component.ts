@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Patient, PatientTreatment } from '../patient';
+import { Patient, PatientAppointment, PatientTreatment } from '../patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { PatientPersonalInfoComponent } from '../patient-personal-info/patient-personal-info.component';
 import { ToastService } from '../../common/toastcomponent/toaster.service';
+import { ActivatedRoute } from '@angular/router'
+
 @Component({
   selector: 'app-patient-master',
   templateUrl: './patient-master.component.html',
@@ -14,14 +16,26 @@ export class PatientMasterComponent {
 
 patient:Patient;
 isSearchTabSelected:boolean = true;
-constructor(private patientService:PatientService, private toastService:ToastService) {
-   
+constructor(private patientService:PatientService, private toastService:ToastService,private route: ActivatedRoute) {
+   this.patient = new Patient();
+   this.patient.PatientTreatments = new Array<PatientTreatment>();
+   this.patient.PatientAppointments = new Array<PatientAppointment>();
 }
 
 ngOnInit()
 {
-  this.patient = this.patientService.getPatientById(2);
-  
+  var Id:Number = Number.parseInt(this.route.snapshot.paramMap.get('Id') as string);
+   this.patientService.getPatientById(Id).subscribe((response) => {
+    this.patient = Object.assign(this.patient,JSON.parse(JSON.stringify(response)) as Patient);
+    if(this.patient.Role === 'patient'){
+      (document.getElementById('navPatientSearch') as HTMLElement).hidden = true;
+      (document.getElementById('tbPatientSearch') as HTMLElement).hidden = true;
+      document.getElementById("tbPersonalInfo-tab")?.click();
+      
+    }
+   }, (error) => {
+   this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
+   });
 }
 
 ClearPatientInformation() {

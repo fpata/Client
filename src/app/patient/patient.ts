@@ -9,8 +9,7 @@ export class Patient {
     MiddleName :string; 
 	Age:number; 
 	Gender :number; 
-	UserName:string;
-	Password :string;
+	Role: string;
 	PermAddress1:string;
 	PermAddress2:string; 
 	PermCity:string;
@@ -77,10 +76,10 @@ export class PatientAppointment {
 	constructor(){}
 	Id:	 			number;
 	PatientId:	 	number;
-	Date:	 	string;
-	Time:		string;
-	NextDate:	string;
-	NextTime: 	string;
+	Date:	 		string;
+	Time:			string;
+	FirstName:		string;
+	LastName: 		string;
 }
 
 export class PatientSearch {

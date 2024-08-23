@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { setHours, setMinutes } from 'date-fns';
 import { colors } from './color';
@@ -14,8 +14,16 @@ export class CalendarComponent {
 
    viewDate: Date = new Date();
  
-   events: CalendarEvent[] = [
-     {
+  events: CalendarEvent[];
+
+  SetCalendarEvents(updatedEvents:CalendarEvent[]){
+    this.events = updatedEvents;
+    alert('method called  with events'+  this.events?.at(0)?.start.toUTCString())
+  }
+
+}
+
+/*{
        title: 'No event end date',
        start: setHours(setMinutes(new Date(), 0), 3),
        color: colors.blue,
@@ -24,7 +32,4 @@ export class CalendarComponent {
        title: 'No event end date',
        start: setHours(setMinutes(new Date(), 0), 5),
        color: colors.yellow,
-     },
-   ];
-
-}
+     },*/

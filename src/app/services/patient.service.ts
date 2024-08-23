@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Patient, PatientSearch } from '../patient/patient';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../common/toastcomponent/toaster.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +18,10 @@ export class PatientService {
    };
    }
 
-  getPatientById(patientId:Number):Patient {
+  getPatientById(patientId:Number):Observable<any> {
     var url:string = "http://localhost:8088/patients/"+patientId;
 
-  this.httpClient.get(url,this.httpOptions).subscribe(response => {
-   Object.assign(this.patient,JSON.parse(JSON.stringify(response)) as Patient);
-  }, error => {
-  this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
-  });
-  return this.patient;
+  return this.httpClient.get<Patient>(url,this.httpOptions);
   }
 
   
