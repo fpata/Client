@@ -76,10 +76,12 @@ export class PatientAppointment {
 	constructor(){}
 	Id:	 			number;
 	PatientId:	 	number;
-	Date:	 		string;
-	Time:			string;
-	FirstName:		string;
-	LastName: 		string;
+	ApptDate:	 		string;
+	ApptTime:			string;
+	PatientName:	string;
+	DoctorName:		string;
+	DoctorId:		number;
+	TreatmentName:	string;
 }
 
 export class PatientSearch {

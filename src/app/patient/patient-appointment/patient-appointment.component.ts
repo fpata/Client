@@ -21,18 +21,23 @@ export class PatientAppointmentComponent {
  
  CreateEvents(){
     var events:CalendarEvent[] = new Array<CalendarEvent>();
-    var hours:number = 0;
-    var minutes:number =0; 
-    var apptdate:Date =   new Date();
+    var apptHours:number = 0;
+    var apptMinutes:number =0; 
+    var apptDate:Date =   new Date();
+    var apptTitle:string= '';
+    var splitTime:string[] =[];
     if(this.appointments.length > 0) {
     this.appointments?.forEach(
       (appt) => {
-        hours = Number.parseInt(appt?.Time?.split(":")[0]);
-        minutes:Number.parseInt(appt?.Time?.split(":")[1]);
-        apptdate = toDate(Date.parse(appt.Date));
+        splitTime =appt?.ApptTime?.split(":");
+        apptHours =  Number.parseInt(splitTime[0]);
+        apptMinutes= Number.parseInt(splitTime[1]);
+        apptDate = toDate(Date.parse(appt.ApptDate));
+        apptTitle = "Patient Name :" + appt.PatientName + ",  Doctor Name:"+ appt.DoctorName + ",  Treatment : "+appt.TreatmentName;
+        ;
         events = [ ... events, {
-        "title": appt.PatientId.toString(),
-        "start":setHours(setMinutes(new Date(),minutes),hours),
+        "title": apptTitle,
+        "start":setHours(setMinutes(apptDate,apptMinutes),apptHours),
         "color":colors.blue,
        }];
       });

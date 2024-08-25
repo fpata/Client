@@ -1,14 +1,6 @@
 <div class="container-fluid">
     <br />
     <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
-      <div class="row">
-        <div class="col">
-          <app-calendar></app-calendar>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
     <div class="row">
         <div class="col">
           <div class="table-responsive">
@@ -32,15 +24,23 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let appointment of appointments">
-                        <td>{{appointment.Date}}</td>
-                        <td>{{appointment.Time}}</td>
-                        <td>John Doe</td>
-                        <td>BMP</td>
+                        <td>{{appointment.ApptDate}}</td>
+                        <td>{{appointment.ApptTime}}</td>
+                        <td>{{appointment.DoctorName}}</td>
+                        <td>{{appointment.TreatmentName}}</td>
                     </tr>
                 </tbody>
             </table>
           </div>
         </div>
+    </div>
+  </div>
+  <br />
+  <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
+    <div class="row">
+      <div class="col">
+        <app-calendar></app-calendar>
+      </div>
     </div>
   </div>
 </div>

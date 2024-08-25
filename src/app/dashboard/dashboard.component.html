@@ -1,14 +1,46 @@
 <div class="container-fluid">
+    <br />
+    <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
     <div class="row">
         <div class="col">
-            <h5>Dashboard</h5>
+          <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th style="text-align: right;"><button type="button" class="btn btn-primary"
+                        data-bs-toggle="modal" data-bs-target="#addAppointmentModal">Add Row</button></th>
+                    </tr>
+                    <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Doctor</th>
+                    <th>Procedure</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of appointments">
+                        <td>{{appointment.ApptDate}}</td>
+                        <td>{{appointment.ApptTime}}</td>
+                        <td>{{appointment.DoctorName}}</td>
+                        <td>{{appointment.TreatmentName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
         </div>
     </div>
+  </div>
+  <br />
+  <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
     <div class="row">
-        <div class="col">
-            <fieldset class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
-                <app-calendar></app-calendar>
-            </fieldset>
-        </div>
+      <div class="col">
+        <app-calendar></app-calendar>
+      </div>
     </div>
+  </div>
 </div>

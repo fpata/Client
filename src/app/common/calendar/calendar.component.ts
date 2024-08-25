@@ -18,7 +18,6 @@ export class CalendarComponent {
 
   SetCalendarEvents(updatedEvents:CalendarEvent[]){
     this.events = updatedEvents;
-    alert('method called  with events'+  this.events?.at(0)?.start.toUTCString())
   }
 
 }
