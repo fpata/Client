@@ -5,7 +5,7 @@ import { PatientAppointment } from '../patient/patient';
 import { colors } from '../common/calendar/color';
 import { setHours, setMinutes, toDate } from 'date-fns';
 import { CalendarEvent } from 'angular-calendar';
-
+import {format} from 'date-fns'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -53,11 +53,11 @@ export class DashboardComponent {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    this.dashboardService.GetAppiontments(1,firstDay.toLocaleDateString(),lastDay.toLocaleDateString()).subscribe(
-      (response) =>{
+    this.dashboardService.GetAppiontments(1,format(firstDay,'dd-MMM-yyyy'),format(lastDay,'dd-MMM-yyyy')).subscribe 
+    ( (response) =>{
         this.appointments = Object.assign(this.appointments,JSON.parse(JSON.stringify(response)) as PatientAppointment[]);
+        this.CreateEvents();
       });
-      this.CreateEvents();
   }
   
 }

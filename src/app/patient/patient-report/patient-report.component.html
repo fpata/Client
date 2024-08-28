@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <br />
     <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
-    <table class="table table-bordered table-striped">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <td></td>
@@ -16,6 +16,7 @@
             <th>Doctor Name</th>
             <th>Report Finding</th>
             <th>Download Report</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,10 @@
                 <td>{{report.DoctorName}}</td>
                 <td>{{report.ReportFinding}}</td>
                 <td>Download</td>
+                <td> 
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReportModal" (click)="EditReport(report.Id)">&nbsp;Edit</button>
+                  &nbsp;&nbsp;<button class="btn btn-secondary" (click)="DeleteReport(report.Id)">&nbsp;Delete</button>
+                 </td>  
             </tr>
         </tbody>
     </table>
@@ -86,10 +91,13 @@
                     </div>
                   </div>
                   <br />
+                  <div>
+                    <input type="hidden" id="hdReportId" value="" />
+                  </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="SaveReport()">Save changes</button>
             </div>
         </div>
     </div>

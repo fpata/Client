@@ -21,7 +21,7 @@ export class DashboardService {
 
     GetAppiontments(userId: number, StartDate: string, EndDate: string): Observable<any> {
         var PatientAppointments: PatientAppointment[] = new Array<PatientAppointment>();
-        var url: string = "http://localhost:8088/dashboard?Id=" + userId + "&StartDate=" + StartDate + "&EndDate=" + EndDate;
+        var url: string = "http://localhost:8088/dashboard/?Id=" + userId + "&StartDate=" + StartDate + "&EndDate=" + EndDate;
         return this.httpClient.get<PatientAppointment[]>(url, this.httpOptions);
     }
 

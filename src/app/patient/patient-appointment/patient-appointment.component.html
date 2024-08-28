@@ -20,6 +20,7 @@
                     <th>Time</th>
                     <th>Doctor</th>
                     <th>Procedure</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,10 @@
                         <td>{{appointment.ApptTime}}</td>
                         <td>{{appointment.DoctorName}}</td>
                         <td>{{appointment.TreatmentName}}</td>
+                        <td> 
+                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAppointmentModal" (click)="EditAppointment(appointment.Id)">&nbsp;Edit</button>
+                          &nbsp;&nbsp;<button class="btn btn-secondary" (click)="DeleteAppointment(appointment.Id)">&nbsp;Delete</button>
+                         </td>  
                     </tr>
                 </tbody>
             </table>
@@ -91,10 +96,11 @@
                     </div>
                   </div>
                   <br />
+                  <div><input type="hidden" value="" id="hdAppointmentId" /></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="SaveAppointment()">Save changes</button>
             </div>
         </div>
     </div>

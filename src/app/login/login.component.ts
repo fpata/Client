@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
+import { AuthenticationService } from '../services/Authentication.service';
 import { ToastComponent } from '../common/toastcomponent/toast/toast.component';
 import { ToastService } from '../common/toastcomponent/toaster.service';
+import { LoginUser } from './login.model';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,39 +12,32 @@ import { ToastService } from '../common/toastcomponent/toaster.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  Username:string;
-  Password:string;
-  IsAuthError:boolean = false;
-  FullName:string;
-  Role:string;
+ 
+  user:LoginUser ;
 
-  constructor(private router:Router, private loginservice:LoginService, private toaster:ToastService){}
+  constructor(private router:Router, private loginservice:AuthenticationService, private toaster:ToastService ){
+    this.user = new LoginUser()
+  }
 
 Reset() {
-  this.Username='';
-  this.Password = '';
-  this.IsAuthError = false;
-  this.FullName ='';
-  this.Role ='';
+  this.user = new LoginUser();
 }
+
 Login() {
   var result:number = 0;
-  this.loginservice.ValidateLogin(this.Username, this.Password).subscribe(
-    (res) => { result = res.Id;  
-      this.FullName = res.FullNamee;
-      this.Role = res.Role;
-    if(result > 0 && this.Role == 'Patient'){
+  this.loginservice.ValidateLogin(this.user.Username, this.user.Password).pipe(first()).subscribe({
+   next: (res) => { result = res.Id;  
+      this.user.FullName = res.FullNamee;
+      this.user.Role = res.Role;
+    if(result > 0 && this.user.Role == 'Patient'){
        this.router.navigate(['/patient/'+result]);
-      } else if(result > 0 && (this.Role == 'Admin' || this.Role == 'Doctor')){
+      } else if(result > 0 && (this.user.Role == 'Admin' || this.user.Role == 'Doctor')){
         this.router.navigate(['/dashboard/']);
-      } else {
-        this.Username='';
-        this.Password = '';
-        this.IsAuthError = true;
-        this.FullName ='';
-        this.Role ='';
-    }
+      } 
+  },
+  error: error => {
+    console.log(error);
   }
-  );
+});
 }
 }

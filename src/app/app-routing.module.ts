@@ -4,13 +4,15 @@ import { PatientMasterComponent } from './patient/patient-master/patient-master.
 import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-appointment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './login/auth.guard';
 
 const routes: Routes = [ 
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuard]},
   {path:'',component:LoginComponent},
-{ path: 'patient', component: PatientMasterComponent },
-{ path: 'patient/:Id', component: PatientMasterComponent },
-{ path: 'doctor', component: DoctorAppointmentComponent }];
+  {path:'login',component:LoginComponent},
+{ path: 'patient', component: PatientMasterComponent,canActivate: [AuthGuard] },
+{ path: 'patient/:Id', component: PatientMasterComponent,canActivate: [AuthGuard] },
+{ path: 'doctor', component: DoctorAppointmentComponent,canActivate: [AuthGuard] }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

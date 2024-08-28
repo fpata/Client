@@ -55,6 +55,7 @@ RemoveChiefComplain(id:number) {
       treatmentDetail.Id = -1;
     else  
     treatmentDetail.Id = (Math.min(...this.treatments[index].PatientTreatmentDetails.map(x => x.Id)) + (-1));
+    
     treatmentDetail.PatientId = this.treatments[0].PatientId;
     treatmentDetail.PatientTreatmentId = treatmentId;
     treatmentDetail.Tooth=  (document.getElementById('txtTooth') as HTMLInputElement).value;
