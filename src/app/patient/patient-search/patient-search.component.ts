@@ -1,6 +1,6 @@
 import { Component,NgModule } from '@angular/core';
 import {Router} from "@angular/router"
-import { PatientSearch } from '../patient';
+import { Patient, PatientSearch, PatientViewModel } from '../patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { ToastService } from 'src/app/common/toastcomponent/toaster.service';
 
@@ -16,6 +16,7 @@ export class PatientSearchComponent {
   searchResult:PatientSearch[];
   searchLengthConstraintError:boolean = false;
   clearSearchClicked:boolean = false;
+  patientViewModel :PatientViewModel;
   constructor(private patientService:PatientService, private toastService:ToastService, private router:Router){
     this.searchPatient = new PatientSearch();
     this.searchPatient.ID = 0;
@@ -29,7 +30,24 @@ export class PatientSearchComponent {
   SearchPatient() {
     if(this.searchPatient.ID != undefined && this.searchPatient.ID != 0){
       document.getElementById("tbPersonalInfo-tab")?.click();
-      this.router.navigate(['/patient', this.searchPatient.ID]);
+      this.patientService.getPatientById(this.searchPatient.ID).subscribe({
+        next: (response) => {
+          if(this.patientViewModel == undefined || this.patientViewModel == null) {
+            this.patientViewModel = new PatientViewModel();
+            this.patientViewModel.Patient = new Patient();
+          }
+          this.patientViewModel = Object.assign(this.patientViewModel,JSON.parse(JSON.stringify(response)) as PatientViewModel);
+          this.patientService.setData(this.patientViewModel);
+        if(this.patientViewModel.Patient.Role === 'patient'){
+          (document.getElementById('navPatientSearch') as HTMLElement).hidden = true;
+          (document.getElementById('tbPatientSearch') as HTMLElement).hidden = true;
+          document.getElementById("tbPersonalInfo-tab")?.click();
+        }
+       }, error: (error)=> {
+       this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
+       },
+    });
+      //this.router.navigate(['/patient', this.searchPatient.ID]);
     }
     else
     {

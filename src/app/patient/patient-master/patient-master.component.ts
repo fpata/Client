@@ -20,17 +20,17 @@ isSearchTabSelected:boolean = true;
 
 constructor(private patientService:PatientService, private toastService:ToastService,
             private route: ActivatedRoute, private router:Router) {
-   this.patientService.getData().subscribe( viewModel => {
-    if(viewModel == undefined || viewModel == null)
-    {
-      this.patientViewModel = new PatientViewModel();
-      this.patient = new Patient();
-      this.patientViewModel.Patient = this.patient;
-      this.patientService.setData(this.patientViewModel);
-    } else {
-    this.patientViewModel = viewModel;
-   this.patient = this.patientViewModel.Patient;
-            }});
+    this.patientService.getData().subscribe( viewModel => {
+      if(viewModel == undefined || viewModel == null)
+      {
+        this.patientViewModel = new PatientViewModel();
+        this.patient = new Patient();
+        this.patientViewModel.Patient = this.patient;
+        this.patientService.setData(this.patientViewModel);
+      } else {
+      this.patientViewModel = viewModel;
+      this.patient = this.patientViewModel.Patient;
+              }});
    }
 
 
@@ -60,13 +60,14 @@ ngOnInit()
       (document.getElementById('navPatientSearch') as HTMLElement).hidden = true;
       (document.getElementById('tbPatientSearch') as HTMLElement).hidden = true;
       document.getElementById("tbPersonalInfo-tab")?.click();
-      
     }
    }, error: (error)=> {
    this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
    },
 });
  }
+
+
 }
 
 ClearPatientInformation() {
