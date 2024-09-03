@@ -1,5 +1,5 @@
 import { Component,NgModule } from '@angular/core';
-import { DOCUMENT } from '@angular/common'; 
+import {Router} from "@angular/router"
 import { PatientSearch } from '../patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { ToastService } from 'src/app/common/toastcomponent/toaster.service';
@@ -16,9 +16,9 @@ export class PatientSearchComponent {
   searchResult:PatientSearch[];
   searchLengthConstraintError:boolean = false;
   clearSearchClicked:boolean = false;
-  constructor(private patientService:PatientService, private toastService:ToastService){
+  constructor(private patientService:PatientService, private toastService:ToastService, private router:Router){
     this.searchPatient = new PatientSearch();
-    this.searchPatient.Id = 0;
+    this.searchPatient.ID = 0;
     this.searchPatient.FirstName = '';
     this.searchPatient.LastName ='';
     this.searchPatient.PrimaryEmail ='';
@@ -27,9 +27,9 @@ export class PatientSearchComponent {
   }
 
   SearchPatient() {
-    if(this.searchPatient.Id != undefined && this.searchPatient.Id != 0){
-      this.patientService.getPatientById(this.searchPatient.Id);
+    if(this.searchPatient.ID != undefined && this.searchPatient.ID != 0){
       document.getElementById("tbPersonalInfo-tab")?.click();
+      this.router.navigate(['/patient', this.searchPatient.ID]);
     }
     else
     {
@@ -46,7 +46,7 @@ clearSearch() {
   this.searchLengthConstraintError = false;
   this.searchPatient.FirstName ='';
   this.searchPatient.LastName ='';
-  this.searchPatient.Id =0;
+  this.searchPatient.ID =0;
   this.searchPatient.PermCity = '';
   this.searchPatient.PrimaryEmail = '';
   this.searchPatient.PrimaryPhone = '';
@@ -55,7 +55,7 @@ clearSearch() {
   }
 
   OnPatientIdClick(patientId: Number) {
-    this.searchPatient.Id = patientId;
+    this.searchPatient.ID = patientId;
     this.SearchPatient();
     }
 

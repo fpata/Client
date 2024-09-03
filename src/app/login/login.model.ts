@@ -1,5 +1,5 @@
 export class LoginUser {
-    Id:number;
+    ID:number;
     Username:string;
     Password:string;
     IsAuthError:boolean;

@@ -43,6 +43,9 @@
                     <textarea id="txtTreatmentPlan" class="form-control" row="2" [(ngModel)]="treatment.TreatmentPlan"></textarea>
                 </div>
             </div>
+            <div>
+              <input type="hidden" id="txtTreatmentID" value="-1" [ngModel]="treatment.ID">
+            </div>
             <br />
             <div class="row">
                 <div class="col-12">
@@ -55,7 +58,7 @@
                                 <th></th>
                                 <th></th>
                                 <th style="text-align: right;"><button type="button" class="btn btn-primary"
-                                        data-bs-toggle="modal" data-bs-target="#addTreatmentModal" data-id="{{treatment.Id}}" (click)="AddTreatmentIdToPopup(treatment.Id.toString())">Add Row</button></th>
+                                        data-bs-toggle="modal" data-bs-target="#addTreatmentModal" data-id="{{treatment.ID}}" (click)="AddTreatmentIdToPopup(treatment.ID)">Add Row</button></th>
                             </tr>
                             <tr>
                               <th></th>  
@@ -63,18 +66,20 @@
                                 <th>Tooth</th>
                                 <th>Procedure</th>
                                 <th>Advice/Medications</th>
+                                <th>ID</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let treatmentdetail of treatment.PatientTreatmentDetails">
+                            <tr *ngFor="let treatmentdetail of treatmentDetails | filter: treatment.ID ">
                               <td>
-                               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTreatmentModal" (click)="EditTreatmentDetails(treatment.Id, treatmentdetail.Id)">&nbsp;Edit</button>
-                               &nbsp;&nbsp;<button class="btn btn-secondary" (click)="DeleteTreatmentDetails(treatment.Id, treatmentdetail.Id)">&nbsp;Delete</button>
+                               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTreatmentModal" (click)="EditTreatmentDetails(treatment.ID, treatmentdetail.ID)">&nbsp;Edit</button>
+                               &nbsp;&nbsp;<button class="btn btn-secondary" (click)="DeleteTreatmentDetails(treatment.ID, treatmentdetail.ID)">&nbsp;Delete</button>
                               </td>  
                                 <td>{{treatmentdetail.TreatmentDate}}</td>
                                 <td>{{treatmentdetail.Tooth}}</td>
                                 <td>{{treatmentdetail.Procedure}}</td>
                                 <td>{{treatmentdetail.Advice}}</td>
+                                <td>{{treatmentdetail.PatientTreatmentID}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -89,7 +94,7 @@
 </div>
 <div class="row">
   <div class="col-12" style="text-align: end;align-items: end;align-content: end;">
-    <button type="button" id="btnRemoveComplaint"  (click)="RemoveChiefComplain(this.treatment.Id)" class="btn btn-primary"> Remove Chief Complain Section</button>
+    <button type="button" id="btnRemoveComplaint"  (click)="RemoveChiefComplain(this.treatment.ID)" class="btn btn-primary"> Remove Chief Complain Section</button>
   </div>
 </div>
 <br>
@@ -142,11 +147,12 @@
                   </div>
                   <div>
                     <input type="hidden" id="hdtreatmentid" value="">
+                    <input type="hidden" id="hdtreatmentdetailid" value="">
                   </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AddTreatmentDetails()" >Add Treatment</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="SaveTreatmentDetails()" >Save Treatment</button>
             </div>
         </div>
     </div>

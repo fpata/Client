@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Patient } from '../patient';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-patient-history',
@@ -7,9 +8,9 @@ import { Patient } from '../patient';
   styleUrls: ['./patient-history.component.css']
 })
 export class PatientHistoryComponent {
-@Input() patient:Patient;
+patient:Patient;
 
-constructor(){}
-
-
+constructor(private patientService:PatientService){
+  this.patientService.getData().subscribe((patientViewModel)=> {this.patient = patientViewModel.Patient; });
+}
 }

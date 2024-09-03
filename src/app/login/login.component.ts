@@ -26,7 +26,7 @@ Reset() {
 Login() {
   var result:number = 0;
   this.loginservice.ValidateLogin(this.user.Username, this.user.Password).pipe(first()).subscribe({
-   next: (res) => { result = res.Id;  
+   next: (res) => { result = res.ID;  
       this.user.FullName = res.FullNamee;
       this.user.Role = res.Role;
     if(result > 0 && this.user.Role == 'Patient'){

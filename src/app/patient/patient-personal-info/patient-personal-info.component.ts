@@ -1,5 +1,6 @@
 import { Component,Input,NgModule } from '@angular/core';
-import { Patient } from '../patient';
+import { Patient, PatientViewModel } from '../patient';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-patient-personal-info',
@@ -8,10 +9,13 @@ import { Patient } from '../patient';
 })
 export class PatientPersonalInfoComponent {
 
-@Input() patient:Patient;
-
-constructor(){
-}
+patient:Patient;
+patientViewModel:PatientViewModel;
+constructor(private patientService:PatientService){
+  this.patientService.getData().subscribe((patientView)=> {
+    this.patientViewModel = patientView;
+    this.patient = patientView.Patient;
+  })}
 
 
 OnGenderChanged(arg0: number) {

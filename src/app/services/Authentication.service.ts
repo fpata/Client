@@ -19,7 +19,7 @@ export class AuthenticationService {
    {
     var url:string = "http://localhost:8088/login/";
     var authResult :boolean = false;
-    var Login = JSON.parse('{"Id":0, "Username":"' + Username + '","Password":"'+ Password +'"}');
+    var Login = JSON.parse('{"ID":0, "Username":"' + Username + '","Password":"'+ Password +'"}');
     return this.httpClient.post<boolean>(url,Login, this.httpOptions);
    }
 }*/

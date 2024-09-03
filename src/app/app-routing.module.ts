@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'login',component:LoginComponent},
 { path: 'patient', component: PatientMasterComponent,canActivate: [AuthGuard] },
-{ path: 'patient/:Id', component: PatientMasterComponent,canActivate: [AuthGuard] },
+{ path: 'patient/:ID', component: PatientMasterComponent,canActivate: [AuthGuard] },
 { path: 'doctor', component: DoctorAppointmentComponent,canActivate: [AuthGuard] }];
 
 @NgModule({

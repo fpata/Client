@@ -3,7 +3,7 @@ export class Patient {
 	constructor(){
 
 	}
-    Id:number;  
+    ID:number;  
 	FirstName:string; 
 	LastName :string; 
     MiddleName :string; 
@@ -36,15 +36,17 @@ export class Patient {
 	FatherMedicalHistory:string;
 	MotherMedicalHistory:string;
 	PatientReports:PatientReport[];
-	PatientTreatments:PatientTreatment[];
-	PatientAppointments:PatientAppointment[];
+PatientTreatments:PatientTreatment[];
+PatientAppointments:PatientAppointment[];
+PatientTreatmentDetails: PatientTreatmentDetail[];
+
 }
 
 
 export class PatientReport  {
 	constructor(){}
-	Id:	 			number;
-	PatientId:	 	number;
+	ID:	 			number;
+	PatientID:	 	number;
 	ReportDate:	 	string;
 	ReportName:		string;
 	ReportFinding:	string;
@@ -53,19 +55,19 @@ export class PatientReport  {
 
 export class PatientTreatment {
 	constructor(){}
-	Id:	 			number;
-	PatientId:	 	number;
+	ID:	 			number;
+	PatientID:	 	number;
 	ChiefComplaint:	string;
 	Observation:	string;
 	TreatmentPlan: 	string;
-	PatientTreatmentDetails: PatientTreatmentDetail[];
+
 }
 
 export class PatientTreatmentDetail {
 	constructor(){}
-	Id:	 			number;
-	PatientId:	 	number;
-	PatientTreatmentId:	 	number;
+	ID:	 			number;
+	PatientID:	 	number;
+	PatientTreatmentID:	 	number;
 	Tooth:	string;
 	Procedure:	string;
 	Advice: 	string;
@@ -74,8 +76,8 @@ export class PatientTreatmentDetail {
 
 export class PatientAppointment {
 	constructor(){}
-	Id:	 			number;
-	PatientId:	 	number;
+	ID:	 			number;
+	PatientID:	 	number;
 	ApptDate:	 		string;
 	ApptTime:			string;
 	PatientName:	string;
@@ -86,10 +88,18 @@ export class PatientAppointment {
 
 export class PatientSearch {
 	constructor(){}
-	Id:Number;
+	ID:Number;
 	FirstName:string; 
 	LastName :string; 
 	PrimaryPhone:string;
 	PrimaryEmail:string;
 	PermCity:String;
+}
+
+export class PatientViewModel {
+Patient: Patient;
+PatientReports:PatientReport[];
+PatientTreatments:PatientTreatment[];
+PatientAppointments:PatientAppointment[];
+PatientTreatmentDetails: PatientTreatmentDetail[];
 }

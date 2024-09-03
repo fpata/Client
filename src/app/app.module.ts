@@ -25,6 +25,7 @@ import { CalendarComponent } from './common/calendar/calendar.component';
 import { CalendarHeaderComponent } from './common/calendar/calender-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { FilterPipe, SortByPipe } from './patient/patient-treatment/filterByTreatmentId.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,9 @@ import { LoginComponent } from './login/login.component';
     CalendarComponent,
     CalendarHeaderComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe, 
+    SortByPipe
   ],
   imports: [
     BrowserModule,

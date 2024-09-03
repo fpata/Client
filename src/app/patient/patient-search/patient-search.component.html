@@ -36,7 +36,7 @@
         <label for="txtSearchPatientID" class="form-label">Patient ID</label>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-3">
-        <input type="number" id="txtSearchPatientID" class="form-control" [(ngModel)]="this.searchPatient.Id">
+        <input type="number" id="txtSearchPatientID" class="form-control" [(ngModel)]="this.searchPatient.ID">
       </div>
       <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
       <div class="col-xs-12 col-sm-5 col-md-2">
@@ -74,7 +74,7 @@
       </thead>
       <tbody>
         <tr  *ngFor="let patient of searchResult">
-          <td><a style="  text-decoration: underline solid blue 1px;cursor:pointer;" (click)="OnPatientIdClick(patient.Id)">{{patient.Id}}</a></td>
+          <td><a style="  text-decoration: underline solid blue 1px;cursor:pointer;" (click)="OnPatientIdClick(patient.ID)">{{patient.ID}}</a></td>
           <td>{{patient.FirstName}}</td>
           <td>{{patient.LastName}}</td>
           <td>{{patient.PermCity}}</td>

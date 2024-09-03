@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Patient, PatientSearch } from '../patient/patient';
+import { Patient, PatientSearch, PatientViewModel } from '../patient/patient';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../common/toastcomponent/toaster.service';
-import { Observable } from 'rxjs';
+import { Observable,Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
   httpOptions:any = null;
-  patient:Patient = new Patient();
-
+  private dataSubject: Subject<PatientViewModel> = new Subject<PatientViewModel>();
 
   constructor(private httpClient:HttpClient, private toastService:ToastService) {
      this.httpOptions = {
@@ -20,7 +19,6 @@ export class PatientService {
 
   getPatientById(patientId:Number):Observable<any> {
     var url:string = "http://localhost:8088/patients/"+patientId;
-
   return this.httpClient.get<Patient>(url,this.httpOptions);
   }
 
@@ -36,29 +34,41 @@ export class PatientService {
     return searchResult;
   }
 
-  savePatient(patient:Patient) {
+  savePatient(patientViewModel:PatientViewModel) {
     var url:string = "http://localhost:8088/patients/";
-    if(this.patient.Id == 0 || this.patient.Id == undefined) {
-    this.httpClient.post(url, patient, this.httpOptions).subscribe(response => {
+    if(patientViewModel.Patient.ID <= 0 || patientViewModel.Patient.ID == undefined) {
+    this.httpClient.post(url, patientViewModel, this.httpOptions).subscribe(response => {
       console.log(JSON.stringify(response));
     },  error => {
      this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
    });
   } else {
-    this.httpClient.put(url, patient, this.httpOptions).subscribe(response => {
+    this.httpClient.put(url, patientViewModel, this.httpOptions).subscribe(response => {
       console.log(JSON.stringify(response));
   }, error => {
    this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
  });
 }
-  }
+}
 
   deletePatient(patientId:number){
-    var url:string = "http://localhost:8088/patients/?Id="+patientId;
+    var url:string = "http://localhost:8088/patients/?ID="+patientId;
     this.httpClient.delete(url, this.httpOptions).subscribe(response => {
       console.log(JSON.stringify(response));
     }, error => {
      this.toastService.showErrorToast('Error',error.name +' : '+ error.message);
    })
   }
+
+
+ 
+
+  setData(patientView: PatientViewModel) {
+    this.dataSubject.next(patientView);
+  }
+
+  getData() {
+    return this.dataSubject.asObservable();
+  }
 }
+

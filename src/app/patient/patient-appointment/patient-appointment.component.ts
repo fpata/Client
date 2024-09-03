@@ -1,9 +1,10 @@
 import { Component, Input,OnInit, ViewChild, } from '@angular/core';
-import { Patient, PatientAppointment } from '../patient';
+import { Patient, PatientAppointment, PatientViewModel } from '../patient';
 import { CalendarComponent } from 'src/app/common/calendar/calendar.component';
 import { CalendarEvent } from 'angular-calendar';
 import { format, setDate,setHours,setMinutes, toDate } from 'date-fns';
 import { colors } from 'src/app/common/calendar/color';
+import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
   selector: 'app-patient-appointment',
@@ -11,11 +12,18 @@ import { colors } from 'src/app/common/calendar/color';
   styleUrls: ['./patient-appointment.component.css']
 })
 export class PatientAppointmentComponent {
+patientViewModel:PatientViewModel;
+@ViewChild(CalendarComponent,{static:true}) calendar:CalendarComponent; 
 
-@ViewChild(CalendarComponent ) calendar:CalendarComponent; 
-@Input() appointments:PatientAppointment[];
+appointments:PatientAppointment[];
 
-constructor(){}
+constructor(private patientService:PatientService){
+  this.patientService.getData().subscribe((patientViewModel)=> {
+    this.patientViewModel = patientViewModel;
+    this.appointments = this.patientViewModel.PatientAppointments;
+    this.CreateEvents();
+  });
+}
 
  
  CreateEvents(){
@@ -25,7 +33,7 @@ constructor(){}
     var apptDate:Date =   new Date();
     var apptTitle:string= '';
     var splitTime:string[] =[];
-    if(this.appointments.length > 0) {
+    if(this.appointments != undefined && this.appointments.length > 0) {
     this.appointments?.forEach(
       (appt) => {
         splitTime =appt?.ApptTime?.split(":");
@@ -40,15 +48,12 @@ constructor(){}
         "color":colors.blue,
        }];
       });
-      if(events.length > 0 ){
-      this.calendar.SetCalendarEvents(events);
+      if(events?.length > 0 ){
+      this.calendar?.SetCalendarEvents(events);
       }
     }
   }
 
-  ngOnChanges() {
-    this.CreateEvents();
-    }
     
     SaveAppointment() {
       var appointment:PatientAppointment = new PatientAppointment();
@@ -56,12 +61,19 @@ constructor(){}
       var IsEdit:boolean = false;
       if(!(appointmentId == undefined || appointmentId == '')) {
         var ApptId =  Number.parseInt(appointmentId)
-        appointment = this.appointments.find(x => x.Id == ApptId) as PatientAppointment;
+        appointment = this.appointments.find(x => x.ID == ApptId) as PatientAppointment;
         IsEdit = true;
+       
       }
       else {
-        appointment.Id = (Math.min(...this.appointments.map(x => x.Id)) + (-1));
+        if(this.appointments == undefined ||  this.appointments == null) {
+          this.appointments = new Array<PatientAppointment>();
+         appointment.ID = -1;
+        }else{
+          appointment.ID = (Math.min(...this.appointments.map(x => x.ID)) + (-1)); 
       }
+      appointment.PatientID = this.patientViewModel.Patient.ID;
+    }
       var dtStringValue= (document.getElementById('txtAppointmentDate') as HTMLInputElement).value;
       if(dtStringValue == undefined || dtStringValue == ''){
         dtStringValue = format(Date.now(),'dd-MMM-yyyy');
@@ -78,24 +90,32 @@ constructor(){}
       }
       (document.getElementById('hdAppointmentId') as HTMLInputElement).value = '';
       this.CreateEvents();
+      this.patientViewModel.PatientAppointments = this.appointments;
+      this.patientService.setData(this.patientViewModel);
       }
       
 
       DeleteAppointment(AppointmentId: number) {
-        var appointmentIndex = this.appointments.findIndex(x=> x.Id === AppointmentId);
+        var appointmentIndex = this.appointments.findIndex(x=> x.ID === AppointmentId);
         this.appointments.splice(appointmentIndex,1);
+        this.CreateEvents();
+        this.patientViewModel.PatientAppointments = this.appointments;
+        this.patientService.setData(this.patientViewModel);
       }
         
       EditAppointment(appointmentId: number) {
           document.getElementById("addAppointmentModal")?.click();
        
-          var appointment:PatientAppointment = this.appointments.find(x=> x.Id == appointmentId)  as PatientAppointment;
+          var appointment:PatientAppointment = this.appointments.find(x=> x.ID == appointmentId)  as PatientAppointment;
           (document.getElementById('hdAppointmentId') as HTMLInputElement).value = appointmentId.toString();
           var dtString = format(toDate(appointment.ApptDate),'yyyy-MM-dd');
           (document.getElementById('txtAppointmentDate') as HTMLInputElement).value = dtString;
           (document.getElementById('txtAppointmentTime') as HTMLInputElement).value = appointment.ApptTime ;
           (document.getElementById('txtApptDoctorName') as HTMLInputElement).value = appointment.DoctorName;
-          (document.getElementById('txtApptProcedure') as HTMLInputElement).value = appointment.TreatmentName;      
+          (document.getElementById('txtApptProcedure') as HTMLInputElement).value = appointment.TreatmentName;     
+          this.CreateEvents(); 
+          this.patientViewModel.PatientAppointments = this.appointments;
+          this.patientService.setData(this.patientViewModel);
         }
 }
 
