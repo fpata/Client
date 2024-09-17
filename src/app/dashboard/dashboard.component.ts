@@ -3,9 +3,11 @@ import { CalendarComponent } from '../common/calendar/calendar.component';
 import { DashboardService } from '../services/dashboard.service';
 import { PatientAppointment } from '../patient/patient';
 import { colors } from '../common/calendar/color';
-import { setHours, setMinutes, toDate } from 'date-fns';
+import { isSameMonth, setHours, setMinutes, toDate } from 'date-fns';
 import { CalendarEvent } from 'angular-calendar';
 import {format} from 'date-fns'
+import { CalendarHeaderComponent } from '../common/calendar/calender-header.component';
+import { CalendarService } from '../common/calendar/calendar.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,12 +15,13 @@ import {format} from 'date-fns'
 })
 
 export class DashboardComponent {
+
   @ViewChild(CalendarComponent ) calendar:CalendarComponent; 
 
   appointments:PatientAppointment[] =new Array<PatientAppointment>();
 
-  constructor(private dashboardService:DashboardService){
-
+  constructor(private dashboardService:DashboardService, private calendarService:CalendarService ){
+    this.calendarService.GetNewData().subscribe(data => this.DateChangedEvent(data));
   }
 
   CreateEvents(){
@@ -51,6 +54,19 @@ export class DashboardComponent {
  
   ngOnInit(){
     var date = new Date();
+    this.DateChangedEvent(date);
+   
+  }
+  
+  DateChangedEvent(date: Date) {
+    var isDateChange= true;
+    if(this.calendar != undefined  && this.calendar?.viewDate != undefined ){
+      if(!isSameMonth(date,this.calendar.viewDate) )  {
+        isDateChange = false;
+      }
+    }
+    if(isDateChange)
+    {
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.dashboardService.GetAppiontments(1,format(firstDay,'dd-MMM-yyyy'),format(lastDay,'dd-MMM-yyyy')).subscribe 
@@ -58,6 +74,9 @@ export class DashboardComponent {
         this.appointments = Object.assign(this.appointments,JSON.parse(JSON.stringify(response)) as PatientAppointment[]);
         this.CreateEvents();
       });
+    }
   }
   
+  ngAfterViewInit(){
+  }
 }

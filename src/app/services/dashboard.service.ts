@@ -24,5 +24,4 @@ export class DashboardService {
         var url: string = "http://localhost:8088/dashboard?ID=" + userId + "&StartDate=" + StartDate + "&EndDate=" + EndDate;
         return this.httpClient.get<PatientAppointment[]>(url, this.httpOptions);
     }
-
 }

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarView } from 'angular-calendar';
+import { CalendarService } from './calendar.service';
 
 @Component({
     selector: 'calendar-header',
@@ -7,6 +8,12 @@ import { CalendarView } from 'angular-calendar';
     })
 
     export class CalendarHeaderComponent {
+
+      constructor(private calendarService:CalendarService){
+        this.viewDateChange.subscribe((val:Date) => {
+          this.calendarService.SetNewDate(val);
+      })
+      }
         @Input() view: CalendarView;
       
         @Input() viewDate: Date;
@@ -17,7 +24,7 @@ import { CalendarView } from 'angular-calendar';
       
         @Output() viewDateChange = new EventEmitter<Date>();
       
-        CalendarView = CalendarView;
+        CalendarView = CalendarView;        
       }
       
 

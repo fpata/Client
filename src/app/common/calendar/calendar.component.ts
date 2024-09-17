@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
-import { setHours, setMinutes } from 'date-fns';
+import { Component, ChangeDetectionStrategy, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { CalendarEvent, CalendarMonthViewEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { isSameDay, isSameMonth, setHours, setMinutes } from 'date-fns';
 import { colors } from './color';
+import { CalendarHeaderComponent } from './calender-header.component';
 
 @Component({
   selector: 'app-calendar',
@@ -10,25 +11,15 @@ import { colors } from './color';
 })
 export class CalendarComponent {
 
-   view: CalendarView = CalendarView.Day;
+@ViewChild(CalendarHeaderComponent) calendarHeader:CalendarHeaderComponent;
 
-   viewDate: Date = new Date();
- 
+  view: CalendarView = CalendarView.Day;
+  viewDate: Date = new Date();
   events: CalendarEvent[];
-
-  SetCalendarEvents(updatedEvents:CalendarEvent[]){
+  
+  SetCalendarEvents(updatedEvents: CalendarEvent[]) {
     this.events = updatedEvents;
-  }
 
+  }
 }
 
-/*{
-       title: 'No event end date',
-       start: setHours(setMinutes(new Date(), 0), 3),
-       color: colors.blue,
-     },
-     {
-       title: 'No event end date',
-       start: setHours(setMinutes(new Date(), 0), 5),
-       color: colors.yellow,
-     },*/
