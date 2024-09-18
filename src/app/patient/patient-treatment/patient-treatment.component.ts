@@ -77,7 +77,9 @@ RemoveChiefComplain(ID:number) {
     treatmentDetail.Tooth=  (document.getElementById('txtTooth') as HTMLInputElement).value;
     treatmentDetail.Procedure = (document.getElementById('txtProcedure') as HTMLInputElement).value;
     treatmentDetail.Advice = (document.getElementById('txtAdvice') as HTMLInputElement).value;
-    treatmentDetail.TreatmentDate = Date.now().toString();
+    var dateVal = (document.getElementById('txtTreatmentDate') as HTMLInputElement).value;
+    if(dateVal == undefined) dateVal = Date.toString();
+    treatmentDetail.TreatmentDate = dateVal
     if(!IsEdit) this.treatmentDetails.push(treatmentDetail);
     hdtreatmentDetailIdElement.value = '';
   }
@@ -105,6 +107,9 @@ RemoveChiefComplain(ID:number) {
       (document.getElementById('hdtreatmentid') as HTMLInputElement).value = treatmentDetail.PatientTreatmentID.toString();   
       (document.getElementById('hdtreatmentdetailid') as HTMLInputElement).value = treatmentDetail.ID.toString();       
     }  
-}
+
+    ngOnInit(){
+     }
 
 
+    }

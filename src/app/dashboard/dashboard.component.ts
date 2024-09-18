@@ -61,7 +61,7 @@ export class DashboardComponent {
   DateChangedEvent(date: Date) {
     var isDateChange= true;
     if(this.calendar != undefined  && this.calendar?.viewDate != undefined ){
-      if(!isSameMonth(date,this.calendar.viewDate) )  {
+      if(isSameMonth(date,this.calendar.viewDate) )  {
         isDateChange = false;
       }
     }
@@ -69,7 +69,7 @@ export class DashboardComponent {
     {
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    this.dashboardService.GetAppiontments(1,format(firstDay,'dd-MMM-yyyy'),format(lastDay,'dd-MMM-yyyy')).subscribe 
+    this.dashboardService.GetAppiontments(1,format(firstDay,'yyyy-MM-dd'),format(lastDay,'yyyy-MM-dd')).subscribe 
     ( (response) =>{
         this.appointments = Object.assign(this.appointments,JSON.parse(JSON.stringify(response)) as PatientAppointment[]);
         this.CreateEvents();

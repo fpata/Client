@@ -76,9 +76,9 @@ constructor(private patientService:PatientService){
     }
       var dtStringValue= (document.getElementById('txtAppointmentDate') as HTMLInputElement).value;
       if(dtStringValue == undefined || dtStringValue == ''){
-        dtStringValue = format(Date.now(),'dd-MMM-yyyy');
+        dtStringValue = format(Date.now(),'yyyy-MM-dd');
       }else{
-        dtStringValue = format(toDate(dtStringValue),'dd-MMM-yyyy');
+        dtStringValue = format(toDate(dtStringValue),'yyyy-MM-dd');
       }
       
       appointment.ApptDate =  dtStringValue;
