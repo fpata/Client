@@ -19,7 +19,7 @@ export class PatientService {
 
   getPatientById(patientId:Number):Observable<any> {
     var url:string = "http://localhost:8088/patients/"+patientId;
-  return this.httpClient.get<Patient>(url,this.httpOptions);
+  return this.httpClient.get<PatientViewModel>(url,this.httpOptions);
   }
 
   

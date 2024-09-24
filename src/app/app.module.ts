@@ -26,6 +26,8 @@ import { CalendarHeaderComponent } from './common/calendar/calender-header.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { FilterPipe, SortByPipe } from './patient/patient-treatment/filterByTreatmentId.pipe';
+//import { PagenotfoundComponent } from './common/pagenotfound/pagenotfound.component';
+import { ErrorHandlingModule } from './error-handling/error-handling.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,7 @@ import { FilterPipe, SortByPipe } from './patient/patient-treatment/filterByTrea
     DashboardComponent,
     LoginComponent,
     FilterPipe, 
-    SortByPipe
+    SortByPipe// PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { FilterPipe, SortByPipe } from './patient/patient-treatment/filterByTrea
      provide: DateAdapter,
      useFactory: adapterFactory,
       }),
+    ErrorHandlingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

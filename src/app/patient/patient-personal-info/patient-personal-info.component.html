@@ -15,7 +15,7 @@
                 <label for="txtFirstName" class="form-label">First Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtFirstName" class="form-control"  placeholder="" [(ngModel)]="this.patient.FirstName" minlength="3" maxlength="50" required=""> 
+                <input type="text" id="txtFirstName" class="form-control"  placeholder="FirstName" [ngModel]="this?.patientViewModel?.Patient?.FirstName" (ngModelChange)="this.patientViewModel.Patient.FirstName = $event"minlength="3" maxlength="50" required=""> 
                 <div class="invalid-feedback">Please fill out this field.</div>
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
@@ -23,7 +23,7 @@
                 <label for="txtLastName" class="form-label">Last Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtLastName" class="form-control" required [(ngModel)]="this.patient.LastName" minlength="3" maxlength="50">
+                <input type="text" id="txtLastName" class="form-control" required [ngModel]="this?.patientViewModel?.Patient?.LastName"  (ngModelChange)="this.patientViewModel.Patient.LastName = $event" minlength="3" maxlength="50">
               </div>
             </div>
             
@@ -33,16 +33,16 @@
                 <label for="txtAge" class="form-label">Age</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="number" id="txtAge" class="form-control" required [(ngModel)]="patient.Age" min="0" max="150">
+                <input type="number" id="txtAge" class="form-control" required [ngModel]="this?.patientViewModel?.Patient?.Age" (ngModelChange)="this.patientViewModel.Patient.Age = $event" min="0" max="150">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="rdGenderMale" class="form-label">Gender</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="radio" id="rdGenderMale" name="gender" class="form-check-input" value="1" [checked]="this.patient.Gender == 1?true:false" (change)="OnGenderChanged(1)">
+                <input type="radio" id="rdGenderMale" name="gender" class="form-check-input" value="1" [checked]="this?.patientViewModel?.Patient?.Gender == 1?true:false" (change)="OnGenderChanged(1)">
                 <label class="form-check-label" for="rdGenderMale">Male</label>&nbsp;&nbsp;
-                <input type="radio" id="rdGenderFemale" name="gender" class="form-check-input" value="0" [checked]="this.patient.Gender == 0?true:false" (change)="OnGenderChanged(0)">
+                <input type="radio" id="rdGenderFemale" name="gender" class="form-check-input" value="0" [checked]="this?.patientViewModel?.Patient?.Gender == 0?true:false" (change)="OnGenderChanged(0)">
                 <label class="form-check-label" for="rdGenderFemale">Female</label>
               </div>
             </div>
@@ -83,7 +83,7 @@
                     <label for="txtPermAddress1" class="form-label">Address Line 1</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtPermAddress1" class="form-control" [(ngModel)]="this.patient.PermAddress1">
+                    <input type="text" id="txtPermAddress1" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PermAddress1" (ngModelChange)="this.patientViewModel.Patient.PermAddress1 = $event">
                   </div>
                 </div>
                <br />
@@ -92,7 +92,7 @@
                     <label for="txtPermAddress2" class="form-label">Address Line 2</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtPermAddress2" class="form-control" [(ngModel)]="this.patient.PermAddress2">
+                    <input type="text" id="txtPermAddress2" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PermAddress2" (ngModelChange)="this.patientViewModel.Patient.PermAddress2 = $event">
                   </div>
                 </div>
                 <br/>
@@ -101,14 +101,14 @@
                     <label for="txtPermCity" class="form-label">City</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermCity" class="form-control" [(ngModel)]="this.patient.PermCity">
+                    <input type="text" id="txtPermCity" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PermCity" (ngModelChange)="this.patientViewModel.Patient.PermCity = $event">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtPermState" class="form-label">State</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermState" class="form-control" [(ngModel)]="this.patient.PermState">
+                    <input type="text" id="txtPermState" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PermState" (ngModelChange)="this.patientViewModel.Patient.PermState = $event">
                   </div>
                 </div>
                 <br />
@@ -117,14 +117,14 @@
                     <label for="txtPermCountry" class="form-label">Country</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermCountry" class="form-control" [(ngModel)]="this.patient.PermCountry">
+                    <input type="text" id="txtPermCountry" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PermCountry" (ngModelChange)="this.patientViewModel.Patient.PermCountry = $event">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtPermZipCode" class="form-label">Zip Code</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtPermZipCode" class="form-control" [(ngModel)]="this.patient.PermPostalCode">
+                    <input type="text" id="txtPermZipCode" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PermPostalCode" (ngModelChange)="this.patientViewModel.Patient.PermPostalCode = $event">
                   </div>
                 </div>
               </div>
@@ -142,7 +142,7 @@
                     <label for="txtCorsAddress1" class="form-label">Address Line 1</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtCorsAddress1" class="form-control" [(ngModel)]="this.patient.CorrAddress1">
+                    <input type="text" id="txtCorsAddress1" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.CorrAddress1" (ngModelChange)="this.patientViewModel.Patient.CorrAddress1 = $event">
                   </div>
                 </div>
                 <br />
@@ -151,7 +151,7 @@
                     <label for="txtCorsAddress2" class="form-label">Address Line 2</label>
                   </div>
                   <div class="col-9">
-                    <input type="text" id="txtCorsAddress2" class="form-control" [(ngModel)]="this.patient.CorrAddress2">
+                    <input type="text" id="txtCorsAddress2" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.CorrAddress2" (ngModelChange)="this.patientViewModel.Patient.CorrAddress2 = $event">
                   </div>
                 </div>
                 <br />
@@ -160,14 +160,14 @@
                     <label for="txtCorsCity" class="form-label">City</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsCity" class="form-control" [(ngModel)]="this.patient.CorrCity">
+                    <input type="text" id="txtCorsCity" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.CorrCity" (ngModelChange)="this.patientViewModel.Patient.CorrCity = $event">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtCorsState" class="form-label" >State</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsState" class="form-control" [(ngModel)]="this.patient.CorrState">
+                    <input type="text" id="txtCorsState" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.CorrState" (ngModelChange)="this.patientViewModel.Patient.CorrState = $event">
                   </div>
                 </div>
                 <br />
@@ -176,14 +176,14 @@
                     <label for="txtCorsCountry" class="form-label">Country</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsCountry" class="form-control" [(ngModel)]="this.patient.CorrCountry">
+                    <input type="text" id="txtCorsCountry" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.CorrCountry" (ngModelChange)="this.patientViewModel.Patient.CorrCountry = $event">
                   </div>
                   <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
                   <div class="col-xs-12 col-sm-5 col-md-2">
                     <label for="txtCorsZipCode" class="form-label">Zip Code</label>
                   </div>
                   <div class="col-xs-12 col-sm-5 col-md-3">
-                    <input type="text" id="txtCorsZipCode" class="form-control" [(ngModel)]="this.patient.CorrPostalCode">
+                    <input type="text" id="txtCorsZipCode" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.CorrPostalCode" (ngModelChange)="this.patientViewModel.Patient.CorrPostalCode = $event">
                   </div>
                 </div>
               </div>
@@ -209,14 +209,14 @@
                 <label for="txtPrimaryPhone" class="form-label">Primary Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtPrimaryPhone" class="form-control" [(ngModel)]="this.patient.PrimaryPhone" required>
+                <input type="text" id="txtPrimaryPhone" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PrimaryPhone" (ngModelChange)="this.patientViewModel.Patient.PrimaryPhone = $event" required>
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtSecondaryPhone" class="form-label">Secondary Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtSecondaryPhone" class="form-control" [(ngModel)]="this.patient.SecondaryPhone">
+                <input type="text" id="txtSecondaryPhone" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.SecondaryPhone" (ngModelChange)="this.patientViewModel.Patient.SecondaryPhone = $event">
               </div>
             </div>
             <br />
@@ -225,14 +225,14 @@
                 <label for="txtPrimaryEmail" class="form-label">Primary Email</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="email" id="txtPrimaryEmail" class="form-control" [(ngModel)]="this.patient.PrimaryEmail">
+                <input type="email" id="txtPrimaryEmail" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.PrimaryEmail" (ngModelChange)="this.patientViewModel.Patient.PrimaryEmail = $event">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtSecondaryEmail" class="form-label">Secondary Email</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="email" id="txtSecondaryEmail" class="form-control" [(ngModel)]="this.patient.SecondaryEmail">
+                <input type="email" id="txtSecondaryEmail" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.SecondaryEmail" (ngModelChange)="this.patientViewModel.Patient.SecondaryEmail = $event">
               </div>
             </div>
             </fieldset>
@@ -256,14 +256,14 @@
                 <label for="txtEmemergencyContactName" class="form-label">Emmergency Contact Name</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactName" class="form-control" [(ngModel)]="this.patient.EmergencyContactName">
+                <input type="text" id="txtEmemergencyContactName" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.EmergencyContactName" (ngModelChange)="this.patientViewModel.Patient.EmergencyContactName = $event">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtEmemergencyContactRelation" class="form-label">Ememergency Contact Relation</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactRelation" class="form-control" [(ngModel)]="this.patient.EmergencyContactRelation">
+                <input type="text" id="txtEmemergencyContactRelation" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.EmergencyContactRelation" (ngModelChange)="this.patientViewModel.Patient.EmergencyContactRelation = $event">
               </div>
             </div>
             <br />
@@ -272,14 +272,14 @@
                 <label for="txtEmemergencyContactEmail" class="form-label">Emmergency Contact Email</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactEmail" class="form-control" [(ngModel)]="this.patient.EmergencyContactEmail">
+                <input type="text" id="txtEmemergencyContactEmail" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.EmergencyContactEmail" (ngModelChange)="this.patientViewModel.Patient.EmergencyContactEmail = $event">
               </div>
               <div class="col-xs-12 col-sm-2 col-md-1">&nbsp;</div>
               <div class="col-xs-12 col-sm-5 col-md-2">
                 <label for="txtEmemergencyContactPhone" class="form-label">Ememergency Contact Phone</label>
               </div>
               <div class="col-xs-12 col-sm-5 col-md-3">
-                <input type="text" id="txtEmemergencyContactPhone" class="form-control" [(ngModel)]="this.patient.EmergencyContactPhone">
+                <input type="text" id="txtEmemergencyContactPhone" class="form-control" [ngModel]="this?.patientViewModel?.Patient?.EmergencyContactPhone" (ngModelChange)="this.patientViewModel.Patient.EmergencyContactPhone = $event">
               </div>
             </div>
           </div>

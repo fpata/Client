@@ -1,0 +1,13 @@
+<div class="title">Error-Page</div>
+<div class="details text-align-center">
+    The application has no errors detected!
+</div>
+
+
+<div *ngIf="error" class="details">
+    <pre>
+            {{error | json }}
+    </pre>
+</div>
+<button *ngIf="error" (click)="restartApp()">restart application</button>
+

@@ -5,6 +5,7 @@ import { DoctorAppointmentComponent } from './doctor/doctor-appointment/doctor-a
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './login/auth.guard';
+//import { PagenotfoundComponent } from './common/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [ 
   { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuard]},
@@ -13,6 +14,7 @@ const routes: Routes = [
 { path: 'patient', component: PatientMasterComponent,canActivate: [AuthGuard] },
 { path: 'patient/:ID', component: PatientMasterComponent,canActivate: [AuthGuard] },
 { path: 'doctor', component: DoctorAppointmentComponent,canActivate: [AuthGuard] }];
+//{ path: '**',pathMatch:'full', component: PagenotfoundComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
