@@ -1,0 +1,5 @@
+{
+    "PatientServiceBaseURL":"http://localhost:8088/patients/",
+    "DashboardServiceBaseURL":"http://localhost:8088/dashboard?ID=",
+    "LoginServiceBaseURL":"http://localhost:8088/login/"
+} 

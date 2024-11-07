@@ -4,15 +4,17 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoginUser } from '../login/login.model';
+import { AppConfigService } from './app-config.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private userSubject: BehaviorSubject<LoginUser | null>;
     public user: Observable<LoginUser | null>;
-    private baseURL:string = "http://4.184.149.46:8089/login/";
+   
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private appConfigService: AppConfigService
     ) {
         this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
         this.user = this.userSubject.asObservable();
@@ -23,7 +25,7 @@ export class AuthenticationService {
     }
 
     ValidateLogin(username: string, password: string) {
-        return this.http.post<any>(this.baseURL, { username, password })
+        return this.http.post<any>(this.appConfigService.loginServiceBaseURL, { username, password })
             .pipe(map(user => {
                 // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
                 user.authdata = window.btoa(username + ':' + password);
