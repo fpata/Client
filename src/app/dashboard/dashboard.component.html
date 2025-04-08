@@ -1,31 +1,30 @@
 <div class="container-fluid">
     <br />
-    <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
+    <div class="rounded p-3 p-md-4" style="border:0.5px solid lightblue;">
     <div class="row">
         <div class="col">
           <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-sm">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th style="text-align: right;"><button type="button" class="btn btn-primary"
-                        data-bs-toggle="modal" data-bs-target="#addAppointmentModal">Add Row</button></th>
+                        <th colspan="4" class="text-end">
+                            <button type="button" class="btn btn-primary btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#addAppointmentModal">
+                                Add Row
+                            </button>
+                        </th>
                     </tr>
                     <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Doctor</th>
-                    <th>Procedure</th>
-                </tr>
+                        <th class="text-nowrap">Date</th>
+                        <th class="text-nowrap">Time</th>
+                        <th class="text-nowrap">Doctor</th>
+                        <th class="text-nowrap">Procedure</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let appointment of appointments">
-                        <td>{{appointment.ApptDate}}</td>
-                        <td>{{appointment.ApptTime}}</td>
+                        <td class="text-nowrap">{{appointment.ApptDate}}</td>
+                        <td class="text-nowrap">{{appointment.ApptTime}}</td>
                         <td>{{appointment.DoctorName}}</td>
                         <td>{{appointment.TreatmentName}}</td>
                     </tr>
@@ -36,7 +35,7 @@
     </div>
   </div>
   <br />
-  <div class="rounded" style="border:0.5px solid lightblue;padding: 40px;">
+  <div class="rounded p-3 p-md-4" style="border:0.5px solid lightblue;">
     <div class="row">
       <div class="col">
         <app-calendar></app-calendar>

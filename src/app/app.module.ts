@@ -24,10 +24,14 @@ import { ModalComponent } from './common/modal/modal.component';
 import { CalendarComponent } from './common/calendar/calendar.component';
 import { CalendarHeaderComponent } from './common/calendar/calender-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login-module/login/login.component';
 import { FilterPipe, SortByPipe } from './patient/patient-treatment/filterByTreatmentId.pipe';
 //import { PagenotfoundComponent } from './common/pagenotfound/pagenotfound.component';
 import { ErrorHandlingModule } from './error-handling/error-handling.module';
+import { SignupComponent } from './login-module/signup/signup.component';  
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +53,8 @@ import { ErrorHandlingModule } from './error-handling/error-handling.module';
     DashboardComponent,
     LoginComponent,
     FilterPipe, 
-    SortByPipe// PagenotfoundComponent
+    SortByPipe,// PagenotfoundComponent
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,7 @@ import { ErrorHandlingModule } from './error-handling/error-handling.module';
      useFactory: adapterFactory,
       }),
     ErrorHandlingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

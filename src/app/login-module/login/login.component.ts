@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/Authentication.service';
-import { ToastComponent } from '../common/toastcomponent/toast/toast.component';
-import { ToastService } from '../common/toastcomponent/toaster.service';
-import { LoginUser } from './login.model';
+import { AuthenticationService } from '../../services/Authentication.service';
+import { ToastComponent } from '../../common/toastcomponent/toast/toast.component';
+import { ToastService } from '../../common/toastcomponent/toaster.service';
+import { LoginUser } from '../login.model';
 import { first } from 'rxjs';
 
 @Component({
